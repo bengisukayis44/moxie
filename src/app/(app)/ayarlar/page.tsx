@@ -34,7 +34,7 @@ export default async function SettingsPage() {
         <p className="px-4 py-3.5 text-sm text-muted">Şimdilik sadece hesabınla ilgili e-postalar (şifre sıfırlama gibi) gönderiyoruz.</p>
       </Section>
 
-      <Section title="Donna">
+      <Section title="Moxie">
         <Link href="/kurallar" className={row}>Topluluk kuralları <span className="text-muted">→</span></Link>
         <Link href="/kvkk" className={row}>KVKK aydınlatma metni <span className="text-muted">→</span></Link>
         {viewer.isAdmin && <Link href="/admin" className={row}>Admin paneli <span className="text-muted">→</span></Link>}

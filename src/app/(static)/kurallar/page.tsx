@@ -4,7 +4,7 @@ export default function RulesPage() {
   return (
     <>
       <h1>Topluluk kuralları</h1>
-      <p>Donna, gerçek insanların gerçek kıyafetleri gerçek bedenleriyle paylaştığı bir yer. Burada herkesin kendini rahat hissetmesi için birkaç basit kuralımız var.</p>
+      <p>Moxie, gerçek insanların gerçek kıyafetleri gerçek bedenleriyle paylaştığı bir yer. Burada herkesin kendini rahat hissetmesi için birkaç basit kuralımız var.</p>
       <h2>Paylaşabileceklerin</h2>
       <ul>
         <li>Kendi aldığın ve üzerinde olan kıyafetlerin fotoğrafları.</li>

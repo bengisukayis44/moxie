@@ -16,7 +16,7 @@ export function BrandMark({ size }: { size: number }) {
         paddingBottom: size * 0.08,
       }}
     >
-      d
+      m
     </div>
   );
 }

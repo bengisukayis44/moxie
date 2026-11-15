@@ -22,7 +22,7 @@ export default async function LoginPage(props: PageProps<"/giris">) {
     <main className="relative mx-auto flex min-h-dvh max-w-md flex-col overflow-hidden bg-ink text-cream">
       <Backdrop covers={covers} />
       <div className="relative z-10 mt-auto bg-gradient-to-t from-ink via-ink/95 to-transparent px-6 pb-8 pt-24">
-        <p className="font-serif text-5xl italic">donna<span className="text-peach">.</span></p>
+        <p className="font-serif text-5xl italic">moxie<span className="text-peach">.</span></p>
         <h1 className="mt-3 font-serif text-2xl leading-snug">
           Kombini gör. <em className="text-peach">Bedenini bil.</em> Tek tıkla al.
         </h1>

@@ -10,10 +10,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Donna — Kombini gör. Bedenini bil.", template: "%s · Donna" },
+  title: { default: "Moxie — Kombini gör. Bedenini bil.", template: "%s · Moxie" },
   description: "Gerçek insanlar, gerçek kıyafetler, aldıkları beden. Sana benzeyen vücutlarda kıyafetin nasıl durduğunu gör.",
-  applicationName: "Donna",
-  appleWebApp: { capable: true, title: "Donna", statusBarStyle: "default" },
+  applicationName: "Moxie",
+  appleWebApp: { capable: true, title: "Moxie", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {

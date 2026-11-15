@@ -132,7 +132,7 @@ export function Onboarding({
 
       <div key={step} className="animate-step flex flex-1 flex-col pt-8">
         {step === 1 && (
-          <Step eyebrow="Hesap" title="Önce küçük bir kontrol" why={`Donna'da vücut ölçüsü ve fotoğraf paylaşıldığı için ${MIN_AGE} yaş sınırı var.`}>
+          <Step eyebrow="Hesap" title="Önce küçük bir kontrol" why={`Moxie'de vücut ölçüsü ve fotoğraf paylaşıldığı için ${MIN_AGE} yaş sınırı var.`}>
             <label className="block text-sm text-muted">Doğum yılın</label>
             <input
               inputMode="numeric"
@@ -520,7 +520,7 @@ function Underage() {
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <h1 className="font-serif text-3xl">Şimdilik erken</h1>
       <p className="mt-3 max-w-xs text-muted">
-        Donna&apos;ya {MIN_AGE} yaşından itibaren katılabilirsin. Hesabın ve girdiğin bilgiler silinecek.
+        Moxie&apos;ye {MIN_AGE} yaşından itibaren katılabilirsin. Hesabın ve girdiğin bilgiler silinecek.
       </p>
       <button
         type="button"

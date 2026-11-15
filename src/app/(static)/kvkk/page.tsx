@@ -6,7 +6,7 @@ export default function KvkkPage() {
     <>
       <h1>KVKK aydınlatma metni</h1>
       <p className="rounded-xl bg-sand p-3 text-sm">Bu metin taslaktır ve yayına alınmadan önce hukuki olarak gözden geçirilecektir.</p>
-      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;) kapsamında, Donna olarak kişisel verilerini nasıl işlediğimizi aşağıda açıklıyoruz.</p>
+      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;) kapsamında, Moxie olarak kişisel verilerini nasıl işlediğimizi aşağıda açıklıyoruz.</p>
 
       <h2>Hangi verileri işliyoruz?</h2>
       <ul>
@@ -27,7 +27,7 @@ export default function KvkkPage() {
       <p>Hesap ve paylaşım verilerini, sözleşmenin kurulması ve ifası (KVKK m.5/2-c) kapsamında işliyoruz. Vücut ölçüleri ve vücut fotoğrafları özel nitelikli kişisel veri sayılabileceğinden, bu veriler yalnızca <b id="acik-riza">açık rızana</b> dayanarak (KVKK m.6) işlenir.</p>
 
       <h2>Açık rıza metni</h2>
-      <p>&quot;Vücut ölçülerimin, bana benzeyen kullanıcıları eşleştirmek amacıyla işlenmesine açık rıza veriyorum.&quot; Bu rızayı vermek zorunda değilsin; vermezsen Donna&apos;yı ölçüsüz kullanmaya devam edebilirsin. Rızanı istediğin zaman Ayarlar → Gizlilik bölümünden geri çekebilirsin; bu durumda kayıtlı ölçülerin ve paylaşımlarındaki ölçü bilgileri silinir.</p>
+      <p>&quot;Vücut ölçülerimin, bana benzeyen kullanıcıları eşleştirmek amacıyla işlenmesine açık rıza veriyorum.&quot; Bu rızayı vermek zorunda değilsin; vermezsen Moxie&apos;yi ölçüsüz kullanmaya devam edebilirsin. Rızanı istediğin zaman Ayarlar → Gizlilik bölümünden geri çekebilirsin; bu durumda kayıtlı ölçülerin ve paylaşımlarındaki ölçü bilgileri silinir.</p>
 
       <h2>Görünürlük</h2>
       <p>Her ölçünün başkalarına nasıl görüneceğini sen seçersin: herkese açık, aralık olarak (ör. 60–65 kg) ya da gizli. Gizli ölçüler yalnızca eşleştirmede kullanılır, hiçbir yerde ham değer olarak gösterilmez. Ölçü değerlerine göre kullanıcı listelenemez.</p>

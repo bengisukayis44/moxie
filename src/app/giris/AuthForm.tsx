@@ -47,7 +47,7 @@ export function AuthForm({ initialMode, next }: { initialMode: Mode; next: strin
       if (mode === "signup") {
         const y = Number(birthYear);
         if (!y || y < 1900 || y > thisYear) return setError("Doğum yılını kontrol eder misin?");
-        if (thisYear - y < MIN_AGE) return setError(`Donna'ya ${MIN_AGE} yaşından itibaren katılabilirsin.`);
+        if (thisYear - y < MIN_AGE) return setError(`Moxie'ye ${MIN_AGE} yaşından itibaren katılabilirsin.`);
         if (!kvkk) return setError("Devam etmek için aydınlatma metnini onaylaman gerekiyor.");
         const { data, error } = await supabase.auth.signUp({
           email,

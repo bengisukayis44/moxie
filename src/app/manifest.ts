@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Donna — Kombini gör. Bedenini bil.",
-    short_name: "Donna",
+    name: "Moxie — Kombini gör. Bedenini bil.",
+    short_name: "Moxie",
     description: "Gerçek insanlar, gerçek kıyafetler, aldıkları beden.",
     start_url: "/",
     display: "standalone",
