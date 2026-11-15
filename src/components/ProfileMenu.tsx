@@ -48,7 +48,7 @@ export function ProfileMenu({ userId, username, blocked }: { userId: string; use
           <div className="divide-y divide-line rounded-[var(--radius-card)] border border-line">
             <button type="button" onClick={share} className="w-full px-4 py-3 text-left text-sm">Profili paylaş</button>
             <ReportButton targetType="user" targetId={userId} label="Şikayet et" />
-            <button type="button" disabled={busy} onClick={toggleBlock} className="w-full px-4 py-3 text-left text-sm text-terracotta">
+            <button type="button" disabled={busy} onClick={toggleBlock} className="w-full px-4 py-3 text-left text-sm text-error">
               {blocked ? "Engeli kaldır" : "Engelle"}
             </button>
           </div>

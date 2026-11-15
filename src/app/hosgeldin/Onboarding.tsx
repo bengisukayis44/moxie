@@ -114,7 +114,7 @@ export function Onboarding({
   const progress = Math.round((Math.min(step, TOTAL) / TOTAL) * 100);
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-md flex-col bg-cream px-6 pb-8 pt-4">
+    <main className="mx-auto flex min-h-dvh max-w-md flex-col bg-bg px-6 pb-8 pt-4">
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -125,8 +125,8 @@ export function Onboarding({
         >
           <BackIcon className="h-5 w-5" />
         </button>
-        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-sand">
-          <div className="h-full rounded-full bg-terracotta transition-all duration-500" style={{ width: `${progress}%` }} />
+        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
+          <div className="h-full rounded-full bg-royal transition-all duration-500" style={{ width: `${progress}%` }} />
         </div>
         <span className="w-9 text-right text-xs tabular-nums text-muted">{Math.min(step, TOTAL)}/{TOTAL}</span>
       </div>
@@ -140,10 +140,10 @@ export function Onboarding({
               value={birthYear}
               onChange={(e) => setBirthYear(e.target.value.replace(/\D/g, "").slice(0, 4))}
               placeholder="1998"
-              className="mt-2 w-full border-b-2 border-line bg-transparent pb-2 font-serif text-5xl outline-none focus:border-terracotta"
+              className="mt-2 w-full border-b-2 border-line bg-transparent pb-2 font-serif text-5xl outline-none focus:border-royal"
             />
             <label className="mt-8 flex items-start gap-3 text-sm leading-relaxed">
-              <input type="checkbox" checked={kvkk} onChange={(e) => setKvkk(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#A8432C]" />
+              <input type="checkbox" checked={kvkk} onChange={(e) => setKvkk(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#5B2A86]" />
               <span>
                 <Link href="/kvkk" target="_blank" className="underline">KVKK Aydınlatma Metni</Link>&apos;ni,{" "}
                 <Link href="/sozlesme" target="_blank" className="underline">Kullanıcı Sözleşmesi</Link>&apos;ni ve{" "}
@@ -227,7 +227,7 @@ export function Onboarding({
               <li><b>İstediğin zaman silebilirsin.</b> Rızanı geri çektiğinde ölçülerin tamamen silinir.</li>
             </ul>
             <label className="mt-8 flex items-start gap-3 rounded-[var(--radius-card)] border border-line bg-card p-4 text-sm leading-relaxed">
-              <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#A8432C]" />
+              <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#5B2A86]" />
               <span>
                 Vücut ölçülerimin, bana benzeyen kullanıcıları eşleştirmek amacıyla işlenmesine{" "}
                 <Link href="/kvkk#acik-riza" target="_blank" className="underline">açık rıza</Link> veriyorum.
@@ -346,7 +346,7 @@ export function Onboarding({
 
         {step === 10 && <Done onMount={() => supabase.from("profile_private").update({ onboarding_done: true, onboarding_step: 10 }).eq("user_id", userId)} returnTo={returnTo} onGo={(href) => { router.replace(href); router.refresh(); }} />}
 
-        {error && <p className="mt-4 rounded-lg bg-terracotta/10 px-3 py-2 text-sm text-terracotta">{error}</p>}
+        {error && <p className="mt-4 rounded-lg bg-error/10 px-3 py-2 text-sm text-error">{error}</p>}
       </div>
     </main>
   );
@@ -373,7 +373,7 @@ function Primary({ children, busy, disabled, onClick }: { children: React.ReactN
       type="button"
       onClick={onClick}
       disabled={busy || disabled}
-      className="w-full rounded-full bg-terracotta py-4 text-base font-semibold text-cream transition-opacity disabled:opacity-40"
+      className="w-full rounded-full bg-royal py-4 text-base font-semibold text-bg transition-opacity disabled:opacity-40"
     >
       {busy ? "Kaydediliyor…" : children}
     </button>
@@ -419,7 +419,7 @@ function UsernameStep({
   return (
     <Step eyebrow="Seni tanıyalım" title="Sana ne diyelim?" why="Kullanıcı adın profil linkinde görünür; görünen adın paylaşımlarında.">
       <label className="text-sm text-muted">Kullanıcı adı</label>
-      <div className="mt-1 flex items-baseline border-b-2 border-line focus-within:border-terracotta">
+      <div className="mt-1 flex items-baseline border-b-2 border-line focus-within:border-royal">
         <span className="font-serif text-3xl text-muted">@</span>
         <input
           autoFocus
@@ -431,14 +431,14 @@ function UsernameStep({
           placeholder="kullaniciadi"
         />
       </div>
-      <p className={`mt-1 text-xs ${status === "ok" ? "text-green-700" : status === "taken" || status === "invalid" ? "text-terracotta" : "text-muted"}`}>{hint}</p>
+      <p className={`mt-1 text-xs ${status === "ok" ? "text-green-700" : status === "taken" || status === "invalid" ? "text-error" : "text-muted"}`}>{hint}</p>
 
       <label className="mt-8 text-sm text-muted">Görünen ad</label>
       <input
         value={displayName}
         maxLength={50}
         onChange={(e) => setDisplayName(e.target.value)}
-        className="mt-1 w-full border-b-2 border-line bg-transparent pb-2 font-serif text-3xl outline-none focus:border-terracotta"
+        className="mt-1 w-full border-b-2 border-line bg-transparent pb-2 font-serif text-3xl outline-none focus:border-royal"
         placeholder="Adın"
       />
       <Footer>
@@ -452,7 +452,7 @@ function AvatarPicker({ current, name, onPick, busy }: { current: string | null;
   const input = useRef<HTMLInputElement>(null);
   return (
     <div className="flex flex-col items-center gap-4 pt-4">
-      <button type="button" onClick={() => input.current?.click()} disabled={busy} className="rounded-full ring-4 ring-sand">
+      <button type="button" onClick={() => input.current?.click()} disabled={busy} className="rounded-full ring-4 ring-bg">
         <Avatar path={current} name={name} size={144} />
       </button>
       <button type="button" onClick={() => input.current?.click()} disabled={busy} className="rounded-full border border-ink px-5 py-2 text-sm font-semibold">
@@ -485,7 +485,7 @@ function PrivacyStep({
             key={v}
             type="button"
             onClick={() => setAll(v)}
-            className={`rounded-xl border p-3 text-left text-xs leading-snug ${keys.every((k) => vis[k] === v) ? "border-terracotta bg-terracotta/5" : "border-line bg-card"}`}
+            className={`rounded-xl border p-3 text-left text-xs leading-snug ${keys.every((k) => vis[k] === v) ? "border-royal bg-blush text-royal-dark" : "border-line bg-card"}`}
           >
             <span className="block text-sm font-semibold">{v === "public" ? "Açık" : v === "range" ? "Aralık" : "Gizli"}</span>
             {VISIBILITY_LABELS[v]}
@@ -565,14 +565,14 @@ function InterestsStep({ initial, busy, onSaveTags, onDone, skip }: {
           return (
             <button key={t.slug} type="button"
               onClick={() => setTags((l) => (on ? l.filter((x) => x !== t.slug) : l.length >= 5 ? l : [...l, t.slug]))}
-              className={`rounded-full border px-4 py-2.5 text-[15px] ${on ? "border-terracotta bg-terracotta text-cream" : "border-line bg-card"}`}>
+              className={`rounded-full border px-4 py-2.5 text-[15px] ${on ? "border-royal bg-royal text-bg" : "border-line bg-card"}`}>
               {t.label}
             </button>
           );
         })}
       </div>
       <p className="mt-3 text-xs text-muted">{tags.length}/5 seçildi</p>
-      {error && <p className="mt-2 text-sm text-terracotta">{error}</p>}
+      {error && <p className="mt-2 text-sm text-error">{error}</p>}
       <Footer>
         <Primary busy={busy} disabled={tags.length < 1} onClick={next}>Devam</Primary>
         {skip}
@@ -592,7 +592,7 @@ function Done({ onMount, returnTo, onGo }: { onMount: () => unknown; returnTo: s
       <h1 className="mt-6 font-serif text-4xl">Hazırsın!</h1>
       <p className="mt-3 max-w-xs text-muted">Profilin oluştu. Eksik kalan ne varsa istediğin zaman profilinden tamamlayabilirsin.</p>
       <div className="mt-auto w-full space-y-2 pt-10">
-        <button type="button" onClick={() => onGo(returnTo ?? "/")} className="w-full rounded-full bg-terracotta py-4 font-semibold text-cream">
+        <button type="button" onClick={() => onGo(returnTo ?? "/")} className="w-full rounded-full bg-royal py-4 font-semibold text-bg">
           Keşfetmeye başla
         </button>
       </div>
@@ -612,7 +612,7 @@ function Underage() {
         type="button"
         disabled={pending}
         onClick={() => start(() => deleteMyAccount("underage"))}
-        className="mt-8 rounded-full bg-ink px-6 py-3 font-semibold text-cream"
+        className="mt-8 rounded-full bg-ink px-6 py-3 font-semibold text-bg"
       >
         {pending ? "Siliniyor…" : "Tamam"}
       </button>

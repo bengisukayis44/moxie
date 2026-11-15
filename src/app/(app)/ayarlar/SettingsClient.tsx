@@ -34,7 +34,7 @@ export function ConsentToggle({ initial }: { initial: boolean }) {
         aria-checked={on}
         disabled={busy}
         onClick={toggle}
-        className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${on ? "bg-terracotta" : "bg-placeholder"}`}
+        className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${on ? "bg-royal" : "bg-placeholder"}`}
       >
         <span className={`absolute top-0.5 h-6 w-6 rounded-full bg-card shadow transition-all ${on ? "left-[22px]" : "left-0.5"}`} />
       </button>
@@ -50,20 +50,20 @@ export function DeleteAccount() {
 
   if (!open) {
     return (
-      <button type="button" onClick={() => setOpen(true)} className="mt-4 mb-6 w-full py-3 text-sm text-terracotta">
+      <button type="button" onClick={() => setOpen(true)} className="mt-4 mb-6 w-full py-3 text-sm text-error">
         Hesabımı ve tüm verilerimi sil
       </button>
     );
   }
   return (
-    <div className="mt-4 mb-6 rounded-[var(--radius-card)] border border-terracotta bg-card p-4">
+    <div className="mt-4 mb-6 rounded-[var(--radius-card)] border border-error bg-card p-4">
       <p className="font-semibold">Hesabını silmek üzeresin</p>
       <p className="mt-1 text-sm text-muted">
         Profilin, ölçülerin, tüm paylaşımların ve fotoğrafların kalıcı olarak silinir. Bu işlem geri alınamaz.
       </p>
       <p className="mt-3 text-sm">Onaylamak için <b>SİL</b> yaz:</p>
-      <input value={text} onChange={(e) => setText(e.target.value)} className="mt-1 w-full rounded-xl border border-line bg-cream px-3 py-2" />
-      {error && <p className="mt-2 text-sm text-terracotta">{error}</p>}
+      <input value={text} onChange={(e) => setText(e.target.value)} className="mt-1 w-full rounded-xl border border-line bg-bg px-3 py-2" />
+      {error && <p className="mt-2 text-sm text-error">{error}</p>}
       <div className="mt-3 flex gap-2">
         <button type="button" onClick={() => setOpen(false)} className="flex-1 rounded-full border border-line py-2.5 text-sm">Vazgeç</button>
         <button
@@ -80,7 +80,7 @@ export function DeleteAccount() {
               }
             })
           }
-          className="flex-1 rounded-full bg-terracotta py-2.5 text-sm font-semibold text-cream disabled:opacity-40"
+          className="flex-1 rounded-full bg-royal py-2.5 text-sm font-semibold text-bg disabled:opacity-40"
         >
           {pending ? "Siliniyor…" : "Kalıcı olarak sil"}
         </button>
@@ -104,7 +104,7 @@ export function NotifyToggle({ userId, initial }: { userId: string; initial: boo
         <p className="mt-0.5 text-xs text-muted">Takip ettiğin biri yeni kombin paylaşınca bildirim al.</p>
       </div>
       <button type="button" role="switch" aria-checked={on} onClick={toggle}
-        className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${on ? "bg-terracotta" : "bg-placeholder"}`}>
+        className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${on ? "bg-royal" : "bg-placeholder"}`}>
         <span className={`absolute top-0.5 h-6 w-6 rounded-full bg-card shadow transition-all ${on ? "left-[22px]" : "left-0.5"}`} />
       </button>
     </div>

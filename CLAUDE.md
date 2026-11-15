@@ -140,7 +140,49 @@ Fit notları düzenlenmez. Ton yargısız; "ideal kilo" yok. Affiliate linkli ü
 
 ## 12. Tasarım dili
 
-Renkler: ink `#1F1B18`, cream `#F5F0EA`, sand `#ECE4D8`, card `#FFFBF6`, terracotta `#A8432C`, peach `#E8A48A`, muted `#7A6F66`, placeholder `#D9C7B4`. Başlıklar Playfair Display (italik vurgu), gövde DM Sans, küçük etiketler büyük harf + geniş aralık + terracotta. Mobil öncelikli (375–430px); alt çubuk: Feed · Ara · + · Bildirimler · Profil. + butonu: creator/admin için "Kombin oluştur" / "Deneme ekle"; normal kullanıcı için "Bir kombin seç ve dene" (son baktığı ve kaydettiği kombinler önce). Aldığı beden her deneme kartında en göze çarpan bilgi. "Sen de dene" ve "İlk deneyen sen ol" sıcak, terracotta vurgulu. Tüm metinler Türkçe; `toLocaleUpperCase('tr-TR')`.
+### Renkler — "Kraliyet moru" paleti
+
+Fikir: blush kızsı ve güven veren taraf; mocha sıcaklık ve doğallık (ten tonlarına yakın, farklı tenleri fotoğrafta güzel gösterir); kraliyet moru güç, cesaret ve Gen Z enerjisi ("Moxie" = cesaret). Mor soğuk alttonlu; blush da buna uygun, hafif soğuk bir gül pembesi.
+
+Token'lar `src/app/globals.css` içinde CSS değişkeni olarak tanımlı (Tailwind sınıfı: `bg-royal`, `text-royal-dark` vb.).
+
+| Token | Hex | Kullanım |
+|---|---|---|
+| `bg` | `#F9F4F2` | Sayfa arka planı |
+| `card` | `#FFFCFB` | Kart arka planı |
+| `blush` | `#F4D4DC` | Yumuşak vurgu zeminleri, "İlk deneyen" rozeti, seçili durumlar |
+| `lilac` | `#E4D8F2` | "Sana en yakın" rozeti, bilgi zeminleri |
+| `mocha` | `#A47864` | İkincil vurgu: ikonlar, ayırıcı detaylar, kategori etiketleri |
+| `mocha-text` | `#7A5A4C` | Fit/kumaş notları gibi sıcak ikincil metin |
+| `royal` | `#5B2A86` | Ana marka rengi: birincil butonlar ("Sen de dene", "Mağazada gör"), aktif sekme, logo |
+| `royal-dark` | `#3E1D5E` | lilac ve blush üzerindeki metin, butonun basılı hali |
+| `ink` | `#221A2B` | Ana metin (saf siyah yerine morumsu koyu) |
+| `muted` | `#75697A` | İkincil metin, tarih, sayaçlar |
+| `line` | `#EADFE3` | İnce kenarlıklar, ayırıcılar |
+| `placeholder` | `#EADFDA` | Görsel yüklenirken |
+| `error` | `#B3261E` | Sadece form hataları |
+
+Metin bg/card üzerinde ink veya muted; royal buton üzerinde bg rengi. lilac/blush zeminlerde metin her zaman royal-dark.
+
+**Renk kuralları:**
+- royal sadece aksiyonlarda ve önemli işaretlerde (butonlar, aktif sekme, "Sana en yakın"). Her yere yayılırsa dikkat çekme gücünü kaybeder.
+- Fit etiketleri nötr: Dar / Tam / Bol ve Kısa / Tam / Uzun için kırmızı/yeşil gibi "iyi/kötü" renkleri asla kullanma; hepsi aynı nötr stilde (line kenarlık + ink metin). Vücut ya da beden yargılanıyormuş gibi görünmemeli.
+- Hata ve uyarı durumları için ayrı, ölçülü kırmızı (`error`) sadece form hatalarında.
+- Fotoğraflar ön planda: arka planlar açık ve sade kalsın ki kıyafet renkleri bozulmadan görünsün.
+- Koyu mod v1'de yok; token'lar ileride koyu mod eklenebilecek şekilde CSS değişkeni olarak tanımlı.
+
+### Tipografi
+
+Başlıklar Playfair Display (vurgu için italik); gövde ve arayüz DM Sans; küçük etiketler DM Sans, büyük harf, geniş harf aralığı, royal.
+
+### Genel
+
+- Mobil öncelikli (375–430px); alt sekme çubuğu: Feed · Ara · + · Bildirimler · Profil
+- + butonu: creator/admin için "Kombin oluştur" / "Deneme ekle" seçimi; normal kullanıcı için "Bir kombin seç ve dene" (son baktığı ve kaydettiği kombinler önce)
+- Yumuşak köşeler (12–16px), ince line kenarlıklar, editoryal his, fotoğraflar ön planda
+- Aldığı beden her deneme kartında en göze çarpan bilgi
+- "Sen de dene" ve "İlk deneyen sen ol" alanları sıcak ve davetkâr: blush zemin + royal buton
+- Tüm metinler Türkçe; büyük harf dönüşümü `toLocaleUpperCase('tr-TR')`
 
 ## 13. Kabul kriterleri
 

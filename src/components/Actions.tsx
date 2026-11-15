@@ -37,7 +37,7 @@ export function LikeButton({ kind, id, liked: initialLiked, count: initialCount 
     }
   }
   return (
-    <button type="button" onClick={toggle} aria-pressed={liked} aria-label="Beğen" className={`flex items-center gap-1 rounded-full px-2 py-1.5 ${liked ? "text-terracotta" : ""}`}>
+    <button type="button" onClick={toggle} aria-pressed={liked} aria-label="Beğen" className={`flex items-center gap-1 rounded-full px-2 py-1.5 ${liked ? "text-royal" : ""}`}>
       <HeartIcon filled={liked} className="h-6 w-6" />
       <span className="text-sm tabular-nums">{count || ""}</span>
     </button>
@@ -59,7 +59,7 @@ export function SaveButton({ lookId, saved: initialSaved }: { lookId: string; sa
     if (error && error.code !== "23505") setSaved(!on);
   }
   return (
-    <button type="button" onClick={toggle} aria-pressed={saved} aria-label="Kaydet" className={`rounded-full px-2 py-1.5 ${saved ? "text-terracotta" : ""}`}>
+    <button type="button" onClick={toggle} aria-pressed={saved} aria-label="Kaydet" className={`rounded-full px-2 py-1.5 ${saved ? "text-royal" : ""}`}>
       <BookmarkIcon filled={saved} className="h-6 w-6" />
     </button>
   );
@@ -111,7 +111,7 @@ export function FollowButton({ userId, following: initial, small = false }: { us
       type="button"
       onClick={toggle}
       disabled={busy}
-      className={`shrink-0 rounded-full font-semibold ${small ? "px-3 py-1 text-xs" : "px-4 py-1.5 text-sm"} ${following ? "border border-line bg-card text-ink" : "bg-ink text-cream"}`}
+      className={`shrink-0 rounded-full font-semibold ${small ? "px-3 py-1 text-xs" : "px-4 py-1.5 text-sm"} ${following ? "border border-line bg-card text-ink" : "bg-ink text-bg"}`}
     >
       {following ? "Takiptesin" : "Takip et"}
     </button>
@@ -175,15 +175,15 @@ function ReportSheet({ targetType, targetId, onClose }: { targetType: string; ta
         <>
           <div className="space-y-2">
             {REASONS.map((r) => (
-              <label key={r} className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 text-sm ${reason === r ? "border-terracotta" : "border-line"}`}>
-                <input type="radio" name="reason" checked={reason === r} onChange={() => setReason(r)} className="accent-[#A8432C]" />
+              <label key={r} className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 text-sm ${reason === r ? "border-royal" : "border-line"}`}>
+                <input type="radio" name="reason" checked={reason === r} onChange={() => setReason(r)} className="accent-[#5B2A86]" />
                 {r}
               </label>
             ))}
           </div>
           <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="Eklemek istediğin bir şey var mı? (opsiyonel)" maxLength={300} rows={2}
-            className="mt-3 w-full rounded-xl border border-line bg-cream p-3 text-sm" />
-          <button type="button" disabled={!reason || busy} onClick={send} className="mt-3 w-full rounded-full bg-terracotta py-3 font-semibold text-cream disabled:opacity-40">
+            className="mt-3 w-full rounded-xl border border-line bg-bg p-3 text-sm" />
+          <button type="button" disabled={!reason || busy} onClick={send} className="mt-3 w-full rounded-full bg-royal py-3 font-semibold text-bg disabled:opacity-40">
             Gönder
           </button>
         </>

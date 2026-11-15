@@ -49,7 +49,7 @@ export default async function NotificationsPage() {
           const { text, href } = describe(n);
           return (
             <li key={n.id}>
-              <Link href={href} className={`flex items-start gap-3 px-4 py-3 ${n.unread ? "bg-peach/10" : ""}`}>
+              <Link href={href} className={`flex items-start gap-3 px-4 py-3 ${n.unread ? "bg-lilac/40" : ""}`}>
                 <Avatar path={n.actor?.avatar_url} name={n.actor?.username ?? "M"} size={36} />
                 <p className="min-w-0 flex-1 text-sm leading-snug">{text}</p>
                 <span className="shrink-0 text-xs text-muted">{timeAgo(n.created_at)}</span>

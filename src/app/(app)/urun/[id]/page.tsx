@@ -33,7 +33,7 @@ export default async function ProductPage(props: PageProps<"/urun/[id]">) {
     <main className="px-4 pt-3">
       <BackButton />
       <section className="mt-3 flex gap-4">
-        <div className={`relative aspect-[3/4] w-36 shrink-0 overflow-hidden rounded-[var(--radius-card)] bg-sand ${p.in_stock ? "" : "grayscale"}`}>
+        <div className={`relative aspect-[3/4] w-36 shrink-0 overflow-hidden rounded-[var(--radius-card)] bg-placeholder ${p.in_stock ? "" : "grayscale"}`}>
           {img && <Image src={img} alt={p.name} fill sizes="144px" className="object-cover" priority />}
         </div>
         <div className="min-w-0 flex-1">
@@ -46,9 +46,9 @@ export default async function ProductPage(props: PageProps<"/urun/[id]">) {
           </p>
           <div className="mt-3">
             {!p.in_stock ? (
-              <span className="inline-block rounded-full bg-sand px-4 py-2 text-sm text-muted">Satışta değil</span>
+              <span className="inline-block rounded-full border border-line px-4 py-2 text-sm text-muted">Satışta değil</span>
             ) : p.has_link ? (
-              <a href={storeHref(p.id, "product", p.id)} target="_blank" rel="noopener nofollow sponsored" className="inline-block rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream">
+              <a href={storeHref(p.id, "product", p.id)} target="_blank" rel="noopener nofollow sponsored" className="inline-block rounded-full bg-royal px-4 py-2 text-sm font-semibold text-bg">
                 Mağazada gör
               </a>
             ) : null}
@@ -76,20 +76,20 @@ export default async function ProductPage(props: PageProps<"/urun/[id]">) {
         </dl>
       )}
 
-      <section className="mt-6 rounded-[var(--radius-card)] bg-ink p-4 text-cream">
-        <p className="eyebrow !text-peach">Beden özeti</p>
+      <section className="mt-6 rounded-[var(--radius-card)] bg-ink p-4 text-bg">
+        <p className="eyebrow !text-blush">Beden özeti</p>
         {s.count === 0 ? (
-          <p className="mt-1 text-sm text-cream/80">Bu ürünü henüz kimse denemedi.</p>
+          <p className="mt-1 text-sm text-bg/80">Bu ürünü henüz kimse denemedi.</p>
         ) : (
           <>
             <p className="mt-1 font-serif text-lg leading-snug">
               Bu üründe {s.count} kişi denedi
               {topFit && <> · çoğu {FIT_LABELS[topFit[0]].toLocaleLowerCase("tr-TR")} dedi</>}
-              {s.top_size && <> · en çok alınan: <b className="text-peach">{s.top_size}</b></>}
+              {s.top_size && <> · en çok alınan: <b className="text-blush">{s.top_size}</b></>}
             </p>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {Object.entries(s.sizes).sort((a, b) => b[1] - a[1]).map(([size, n]) => (
-                <span key={size} className="rounded-full bg-cream/10 px-2.5 py-1 text-xs"><b>{size}</b> · {n}</span>
+                <span key={size} className="rounded-full bg-bg/10 px-2.5 py-1 text-xs"><b>{size}</b> · {n}</span>
               ))}
             </div>
           </>

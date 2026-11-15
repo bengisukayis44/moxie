@@ -75,18 +75,18 @@ export function AuthForm({ initialMode, next }: { initialMode: Mode; next: strin
     }
   }
 
-  const input = "w-full rounded-xl border border-cream/20 bg-cream/10 px-4 py-3 text-base text-cream placeholder:text-cream/40 focus:border-peach focus:outline-none";
+  const input = "w-full rounded-xl border border-bg/20 bg-bg/10 px-4 py-3 text-base text-bg placeholder:text-bg/40 focus:border-blush focus:outline-none";
 
   return (
     <div className="mt-6">
       {mode !== "forgot" && (
-        <div className="mb-4 grid grid-cols-2 rounded-full bg-cream/10 p-1 text-sm">
+        <div className="mb-4 grid grid-cols-2 rounded-full bg-bg/10 p-1 text-sm">
           {(["signup", "login"] as const).map((m) => (
             <button
               key={m}
               type="button"
               onClick={() => { setMode(m); setError(null); setInfo(null); }}
-              className={`rounded-full py-2 font-semibold ${mode === m ? "bg-cream text-ink" : "text-cream/70"}`}
+              className={`rounded-full py-2 font-semibold ${mode === m ? "bg-bg text-ink" : "text-bg/70"}`}
             >
               {m === "signup" ? "Kayıt ol" : "Giriş yap"}
             </button>
@@ -100,18 +100,18 @@ export function AuthForm({ initialMode, next }: { initialMode: Mode; next: strin
             type="button"
             onClick={google}
             disabled={busy}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-cream py-3 font-semibold text-ink disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-bg py-3 font-semibold text-ink disabled:opacity-60"
           >
             <GoogleMark /> Google ile devam et
           </button>
-          <div className="my-4 flex items-center gap-3 text-xs text-cream/40">
-            <span className="h-px flex-1 bg-cream/15" /> veya e-posta ile <span className="h-px flex-1 bg-cream/15" />
+          <div className="my-4 flex items-center gap-3 text-xs text-bg/40">
+            <span className="h-px flex-1 bg-bg/15" /> veya e-posta ile <span className="h-px flex-1 bg-bg/15" />
           </div>
         </>
       )}
 
       <form onSubmit={submit} className="space-y-3">
-        {mode === "forgot" && <p className="text-sm text-cream/80">E-postanı yaz, şifreni sıfırlaman için bir bağlantı gönderelim.</p>}
+        {mode === "forgot" && <p className="text-sm text-bg/80">E-postanı yaz, şifreni sıfırlaman için bir bağlantı gönderelim.</p>}
         <input className={input} type="email" required autoComplete="email" placeholder="E-posta" value={email} onChange={(e) => setEmail(e.target.value)} />
         {mode !== "forgot" && (
           <input
@@ -136,8 +136,8 @@ export function AuthForm({ initialMode, next }: { initialMode: Mode; next: strin
               value={birthYear}
               onChange={(e) => setBirthYear(e.target.value.replace(/\D/g, "").slice(0, 4))}
             />
-            <label className="flex items-start gap-3 text-xs leading-relaxed text-cream/80">
-              <input type="checkbox" checked={kvkk} onChange={(e) => setKvkk(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#E8A48A]" />
+            <label className="flex items-start gap-3 text-xs leading-relaxed text-bg/80">
+              <input type="checkbox" checked={kvkk} onChange={(e) => setKvkk(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#F4D4DC]" />
               <span>
                 <Link href="/kvkk" target="_blank" className="underline">KVKK Aydınlatma Metni</Link>&apos;ni,{" "}
                 <Link href="/sozlesme" target="_blank" className="underline">Kullanıcı Sözleşmesi</Link>&apos;ni ve{" "}
@@ -146,9 +146,9 @@ export function AuthForm({ initialMode, next }: { initialMode: Mode; next: strin
             </label>
           </>
         )}
-        {error && <p className="rounded-lg bg-terracotta/30 px-3 py-2 text-sm">{error}</p>}
-        {info && <p className="rounded-lg bg-cream/15 px-3 py-2 text-sm">{info}</p>}
-        <button disabled={busy} className="w-full rounded-xl bg-terracotta py-3 font-semibold text-cream disabled:opacity-60">
+        {error && <p className="rounded-lg bg-error px-3 py-2 text-sm text-white">{error}</p>}
+        {info && <p className="rounded-lg bg-bg/15 px-3 py-2 text-sm">{info}</p>}
+        <button disabled={busy} className="w-full rounded-xl bg-royal py-3 font-semibold text-bg disabled:opacity-60">
           {busy ? "Bir saniye…" : mode === "signup" ? "Kayıt ol" : mode === "login" ? "Giriş yap" : "Bağlantı gönder"}
         </button>
       </form>
@@ -156,7 +156,7 @@ export function AuthForm({ initialMode, next }: { initialMode: Mode; next: strin
       <button
         type="button"
         onClick={() => { setMode(mode === "forgot" ? "login" : "forgot"); setError(null); setInfo(null); }}
-        className="mt-3 w-full text-center text-sm text-cream/60"
+        className="mt-3 w-full text-center text-sm text-bg/60"
       >
         {mode === "forgot" ? "← Girişe dön" : mode === "login" ? "Şifremi unuttum" : ""}
       </button>

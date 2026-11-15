@@ -13,7 +13,7 @@ export function MeasurementChips({ m, extra = [] }: { m: MaskedMeasurements | nu
   return (
     <dl className="flex flex-wrap gap-2">
       {rows.map(([label, v]) => (
-        <div key={label} className="rounded-xl bg-sand px-3 py-1.5">
+        <div key={label} className="rounded-xl bg-bg px-3 py-1.5">
           <dt className="text-[10px] uppercase tracking-wider text-muted">{label}</dt>
           <dd className="text-sm font-semibold tabular-nums">{v}</dd>
         </div>

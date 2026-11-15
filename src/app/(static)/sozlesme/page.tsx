@@ -8,7 +8,7 @@ export default function TermsPage() {
   return (
     <>
       <h1>Kullanıcı sözleşmesi</h1>
-      <p className="rounded-xl bg-sand p-3 text-sm">Bu metin taslaktır ve yayına alınmadan önce hukuki olarak gözden geçirilecektir.</p>
+      <p className="rounded-xl bg-lilac p-3 text-sm text-royal-dark">Bu metin taslaktır ve yayına alınmadan önce hukuki olarak gözden geçirilecektir.</p>
 
       <h2>Hizmet</h2>
       <p>Moxie; Türkiye&apos;de satılan ürünlerden oluşan kombinleri, bu kombinleri deneyen kullanıcıların fotoğraflarını, ölçülerini ve aldıkları bedenleri bir araya getiren bir platformdur. Moxie bir mağaza değildir; ürünleri satıcı mağazalardan satın alırsın.</p>

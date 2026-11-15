@@ -81,7 +81,7 @@ export function ProfileEditor({
         <button type="button" onClick={() => fileInput.current?.click()} aria-label="Profil fotoğrafını değiştir">
           <Avatar path={p.avatar_url} name={p.display_name ?? p.username} size={72} />
         </button>
-        <button type="button" onClick={() => fileInput.current?.click()} className="text-sm font-semibold text-terracotta">Fotoğrafı değiştir</button>
+        <button type="button" onClick={() => fileInput.current?.click()} className="text-sm font-semibold text-royal">Fotoğrafı değiştir</button>
         <input ref={fileInput} type="file" accept="image/*" hidden onChange={(e) => e.target.files?.[0] && pickAvatar(e.target.files[0])} />
       </section>
 
@@ -104,10 +104,10 @@ export function ProfileEditor({
         {!consent ? (
           <div className="mt-4 rounded-[var(--radius-card)] border border-line bg-card p-4">
             <label className="flex items-start gap-3 text-sm leading-relaxed">
-              <input type="checkbox" checked={consentBox} onChange={(e) => setConsentBox(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#A8432C]" />
+              <input type="checkbox" checked={consentBox} onChange={(e) => setConsentBox(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#5B2A86]" />
               <span>Vücut ölçülerimin, bana benzeyen kullanıcıları eşleştirmek amacıyla işlenmesine <Link href="/kvkk#acik-riza" className="underline">açık rıza</Link> veriyorum.</span>
             </label>
-            <button type="button" disabled={!consentBox} onClick={giveConsent} className="mt-3 rounded-full bg-terracotta px-4 py-2 text-sm font-semibold text-cream disabled:opacity-40">Ölçü eklemeye başla</button>
+            <button type="button" disabled={!consentBox} onClick={giveConsent} className="mt-3 rounded-full bg-royal px-4 py-2 text-sm font-semibold text-bg disabled:opacity-40">Ölçü eklemeye başla</button>
           </div>
         ) : (
           <div className="mt-4 space-y-3">
@@ -145,9 +145,9 @@ export function ProfileEditor({
         )}
       </section>
 
-      {msg && <p className={`mt-4 rounded-lg px-3 py-2 text-sm ${msg.ok ? "bg-sand" : "bg-terracotta/10 text-terracotta"}`}>{msg.text}</p>}
+      {msg && <p className={`mt-4 rounded-lg px-3 py-2 text-sm ${msg.ok ? "bg-lilac text-royal-dark" : "bg-error/10 text-error"}`}>{msg.text}</p>}
       <div className="sticky bottom-20 mt-6">
-        <button type="button" disabled={busy} onClick={save} className="w-full rounded-full bg-terracotta py-4 font-semibold text-cream shadow-lg disabled:opacity-50">
+        <button type="button" disabled={busy} onClick={save} className="w-full rounded-full bg-royal py-4 font-semibold text-bg shadow-lg disabled:opacity-50">
           {busy ? "Kaydediliyor…" : "Kaydet"}
         </button>
       </div>

@@ -23,7 +23,7 @@ export function TryonView({ tryon, showLookLink = true }: { tryon: TryonDetail; 
       <Gallery photos={tryon.photos} bucket="tryon-photos" alt={`@${tryon.user.username} denemesi`} />
 
       {STATUS_NOTE[tryon.status] && (
-        <div className="bg-terracotta px-4 py-2 text-sm text-cream">
+        <div className="bg-royal px-4 py-2 text-sm text-bg">
           {STATUS_NOTE[tryon.status]}
           {tryon.reject_reason && <span className="block opacity-90">Sebep: {tryon.reject_reason}</span>}
         </div>
@@ -53,9 +53,9 @@ export function TryonView({ tryon, showLookLink = true }: { tryon: TryonDetail; 
           </div>
           {(near || tryon.is_first || badge) && (
             <div className="mt-3 flex flex-wrap gap-1.5 text-xs font-semibold">
-              {near && <span className="rounded-full bg-terracotta/10 px-2.5 py-1 text-terracotta">{near}</span>}
-              {tryon.is_first && <span className="rounded-full bg-peach/30 px-2.5 py-1">İlk deneyen</span>}
-              {badge && <span className="rounded-full bg-sand px-2.5 py-1">{badge}</span>}
+              {near && <span className="rounded-full bg-lilac px-2.5 py-1 text-royal-dark">{near}</span>}
+              {tryon.is_first && <span className="rounded-full bg-blush px-2.5 py-1 text-royal-dark">İlk deneyen</span>}
+              {badge && <span className="rounded-full border border-line px-2.5 py-1">{badge}</span>}
             </div>
           )}
           <p className="eyebrow mb-2 mt-4">Denerkenki ölçüleri</p>
@@ -92,10 +92,10 @@ export function TryonView({ tryon, showLookLink = true }: { tryon: TryonDetail; 
                             {it.fit_rating && <Chip label="Kalıp" value={FIT_LABELS[it.fit_rating]} />}
                             {it.length_rating && <Chip label="Boy" value={LENGTH_LABELS[it.length_rating]} />}
                           </div>
-                          {it.fit_note && <p className="mt-2 leading-relaxed"><span className="text-muted">Fit: </span>{it.fit_note}</p>}
-                          {it.fabric_note && <p className="mt-1 leading-relaxed"><span className="text-muted">Kumaş: </span>{it.fabric_note}</p>}
+                          {it.fit_note && <p className="mt-2 leading-relaxed text-mocha-text"><span className="text-muted">Fit: </span>{it.fit_note}</p>}
+                          {it.fabric_note && <p className="mt-1 leading-relaxed text-mocha-text"><span className="text-muted">Kumaş: </span>{it.fabric_note}</p>}
                         </div>
-                        <div className="shrink-0 rounded-xl bg-terracotta px-3 py-1.5 text-center text-cream">
+                        <div className="shrink-0 rounded-xl bg-royal px-3 py-1.5 text-center text-bg">
                           <span className="block text-[9px] uppercase tracking-widest opacity-80">Aldığı beden</span>
                           <span className="block text-2xl font-bold leading-tight">{it.size_bought}</span>
                         </div>
@@ -120,7 +120,7 @@ export function TryonView({ tryon, showLookLink = true }: { tryon: TryonDetail; 
 
 function Chip({ label, value }: { label: string; value: string }) {
   return (
-    <span className="rounded-full bg-sand px-2.5 py-1">
+    <span className="rounded-full border border-line px-2.5 py-1 text-ink">
       <span className="text-muted">{label}:</span> <b>{value}</b>
     </span>
   );

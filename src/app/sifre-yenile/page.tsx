@@ -33,8 +33,8 @@ export default function ResetPasswordPage() {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full rounded-xl border border-line bg-card px-4 py-3 text-base"
         />
-        {error && <p className="text-sm text-terracotta">{error}</p>}
-        <button disabled={busy} className="w-full rounded-xl bg-terracotta py-3 font-semibold text-cream">Kaydet</button>
+        {error && <p className="text-sm text-error">{error}</p>}
+        <button disabled={busy} className="w-full rounded-xl bg-royal py-3 font-semibold text-bg">Kaydet</button>
       </form>
     </main>
   );

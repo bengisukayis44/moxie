@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Gerçek insanlar, gerçek kıyafetler, aldıkları beden.",
     start_url: "/",
     display: "standalone",
-    background_color: "#F5F0EA",
-    theme_color: "#F5F0EA",
+    background_color: "#F9F4F2",
+    theme_color: "#F9F4F2",
     lang: "tr",
     icons: [
       { src: "/icons/192", sizes: "192x192", type: "image/png" },

@@ -138,14 +138,14 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
           {pending ? "İncelemeden sonra yayında olacak. Onaylandığında sana haber vereceğiz." : "Senin gibi biri tam da bunu arıyordu."}
         </p>
         <div className="mt-8 w-full space-y-2">
-          <Link href={`/d/${result.id}`} className="block rounded-full bg-terracotta py-4 font-semibold text-cream">Denememi gör</Link>
+          <Link href={`/d/${result.id}`} className="block rounded-full bg-royal py-4 font-semibold text-bg">Denememi gör</Link>
           <Link href={`/k/${look.id}`} className="block rounded-full border border-ink py-4 font-semibold">Kombine dön</Link>
         </div>
       </main>
     );
   }
 
-  const field = "w-full rounded-xl border border-line bg-cream px-3 py-2.5 text-[15px]";
+  const field = "w-full rounded-xl border border-line bg-bg px-3 py-2.5 text-[15px]";
 
   return (
     <main className="px-4 pt-3">
@@ -168,8 +168,8 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
                 <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-placeholder">
                   <Image src={p.preview} alt="" fill unoptimized={!p.existing} sizes="33vw" className={`object-cover ${p.path ? "" : "opacity-50"}`} />
                   {!p.path && !p.failed && <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold">Yükleniyor…</span>}
-                  {p.failed && <span className="absolute inset-0 flex items-center justify-center bg-terracotta/70 p-2 text-center text-xs text-cream">Yüklenemedi</span>}
-                  <button type="button" onClick={() => removePhoto(p.key)} className="absolute right-1.5 top-1.5 rounded-full bg-ink/60 p-1 text-cream" aria-label="Kaldır"><CloseIcon className="h-3.5 w-3.5" /></button>
+                  {p.failed && <span className="absolute inset-0 flex items-center justify-center bg-error/80 p-2 text-center text-xs text-white">Yüklenemedi</span>}
+                  <button type="button" onClick={() => removePhoto(p.key)} className="absolute right-1.5 top-1.5 rounded-full bg-ink/60 p-1 text-bg" aria-label="Kaldır"><CloseIcon className="h-3.5 w-3.5" /></button>
                   <div className="absolute inset-x-1.5 bottom-1.5 flex justify-between">
                     <button type="button" disabled={i === 0} onClick={() => move(i, -1)} className="rounded-full bg-card/90 p-1 disabled:invisible" aria-label="Sola taşı"><ArrowLeftIcon className="h-3.5 w-3.5" /></button>
                     <button type="button" disabled={i === photos.length - 1} onClick={() => move(i, 1)} className="rounded-full bg-card/90 p-1 disabled:invisible" aria-label="Sağa taşı"><ArrowRightIcon className="h-3.5 w-3.5" /></button>
@@ -208,7 +208,7 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
               return (
                 <div key={product.look_item_id} className="rounded-[var(--radius-card)] border border-line bg-card p-4">
                   <div className="flex gap-3">
-                    <div className="relative h-16 w-12 shrink-0 overflow-hidden rounded-lg bg-sand">
+                    <div className="relative h-16 w-12 shrink-0 overflow-hidden rounded-lg bg-placeholder">
                       {img && <Image src={img} alt="" fill sizes="48px" className="object-cover" />}
                     </div>
                     <div className="min-w-0">
@@ -216,7 +216,7 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
                       <p className="line-clamp-2 text-sm">{product.name}</p>
                     </div>
                   </div>
-                  <div className="mt-3 grid grid-cols-3 gap-1 rounded-xl bg-sand p-1 text-xs">
+                  <div className="mt-3 grid grid-cols-3 gap-1 rounded-xl bg-bg p-1 text-xs">
                     {(Object.keys(WORN_LABELS) as Worn[]).map((w) => (
                       <button key={w} type="button" onClick={() => setPart(part.look_item_id, { worn: w })}
                         className={`rounded-lg px-1 py-2 leading-tight ${part.worn === w ? "bg-card font-semibold shadow-sm" : "text-muted"}`}>
@@ -240,7 +240,7 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
                         <div className="no-scrollbar mt-2 flex gap-1.5 overflow-x-auto">
                           {hints.map((s) => (
                             <button key={s} type="button" onClick={() => setPart(part.look_item_id, { size_bought: s })}
-                              className={`shrink-0 rounded-full border px-3 py-1 text-xs ${part.size_bought.toUpperCase() === s ? "border-terracotta bg-terracotta text-cream" : "border-line"}`}>
+                              className={`shrink-0 rounded-full border px-3 py-1 text-xs ${part.size_bought.toUpperCase() === s ? "border-royal bg-royal text-bg" : "border-line"}`}>
                               {s}
                             </button>
                           ))}
@@ -268,9 +268,9 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
             className="mt-4 w-full rounded-[var(--radius-card)] border border-line bg-card p-3 text-[15px]" />
 
           {!hasMeasurements && (
-            <div className="mt-4 rounded-[var(--radius-card)] border border-terracotta/40 bg-terracotta/5 p-4 text-sm">
+            <div className="mt-4 rounded-[var(--radius-card)] bg-lilac p-4 text-sm text-royal-dark">
               <p><b>Ölçülerini eklersen denemen çok daha faydalı olur.</b> Sana benzeyenler, hangi bedenin kendilerine uyacağını senin denemene bakarak anlar.</p>
-              <Link href="/hosgeldin?adim=4" className="mt-2 inline-block font-semibold text-terracotta">Ölçülerimi ekle →</Link>
+              <Link href="/hosgeldin?adim=4" className="mt-2 inline-block font-semibold text-royal">Ölçülerimi ekle →</Link>
             </div>
           )}
 
@@ -286,14 +286,14 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
                   <li key={pr.look_item_id} className="flex items-center justify-between gap-2">
                     <span className="min-w-0 truncate"><b>{pr.brand}</b> {pr.name}</span>
                     {p.worn === "not_worn" ? <span className="shrink-0 text-xs text-muted">giymedim</span>
-                      : <span className="shrink-0 rounded-md bg-terracotta px-1.5 font-bold text-cream">{p.size_bought.toUpperCase()}</span>}
+                      : <span className="shrink-0 rounded-md bg-royal px-1.5 font-bold text-bg">{p.size_bought.toUpperCase()}</span>}
                   </li>
                 );
               })}
             </ul>
           </div>
           <p className="mt-3 text-xs text-muted">Profilindeki güncel ölçüler bu denemeye kaydedilir (gizlilik ayarlarınla birlikte).</p>
-          {error && <p className="mt-3 rounded-lg bg-terracotta/10 px-3 py-2 text-sm text-terracotta">{error}</p>}
+          {error && <p className="mt-3 rounded-lg bg-error/10 px-3 py-2 text-sm text-error">{error}</p>}
           <Next disabled={busy} onClick={submit}>{busy ? "Paylaşılıyor…" : existing ? "Kaydet" : "Paylaş"}</Next>
         </section>
       )}
@@ -304,7 +304,7 @@ export function TryonForm({ userId, look, categories, existing, hasMeasurements,
 function Next({ children, disabled, onClick }: { children: React.ReactNode; disabled?: boolean; onClick: () => void }) {
   return (
     <div className="sticky bottom-20 mt-8 pb-2">
-      <button type="button" disabled={disabled} onClick={onClick} className="w-full rounded-full bg-terracotta py-4 font-semibold text-cream shadow-lg disabled:opacity-40">{children}</button>
+      <button type="button" disabled={disabled} onClick={onClick} className="w-full rounded-full bg-royal py-4 font-semibold text-bg shadow-lg disabled:opacity-40">{children}</button>
     </div>
   );
 }
@@ -313,7 +313,7 @@ function Segment({ label, options, value, onChange }: { label: string; options: 
   return (
     <div className="flex items-center gap-3">
       <span className="w-12 text-sm text-muted">{label}</span>
-      <div className="grid flex-1 grid-cols-3 gap-1 rounded-xl bg-sand p-1 text-sm">
+      <div className="grid flex-1 grid-cols-3 gap-1 rounded-xl bg-bg p-1 text-sm">
         {Object.entries(options).map(([k, v]) => (
           <button key={k} type="button" onClick={() => onChange(value === k ? "" : k)} className={`rounded-lg py-1.5 ${value === k ? "bg-card font-semibold shadow-sm" : "text-muted"}`}>{v}</button>
         ))}

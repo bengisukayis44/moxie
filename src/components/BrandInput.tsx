@@ -35,14 +35,14 @@ export function BrandInput({ value, onChange, className }: { value: string; onCh
         <ul onMouseDown={(e) => e.preventDefault()} className="absolute inset-x-0 top-full z-20 mt-1 max-h-72 overflow-y-auto overscroll-contain rounded-xl border border-line bg-card shadow-lg">
           {value.trim() && !exact && (
             <li className="sticky top-0 border-b border-line bg-card">
-              <button type="button" onClick={() => setOpen(false)} className="w-full px-3 py-2.5 text-left text-sm text-muted hover:bg-sand">
+              <button type="button" onClick={() => setOpen(false)} className="w-full px-3 py-2.5 text-left text-sm text-muted hover:bg-bg">
                 &ldquo;{value.trim()}&rdquo; yeni marka olarak ekle
               </button>
             </li>
           )}
           {options.map((o) => (
             <li key={o.id}>
-              <button type="button" onClick={() => { onChange(o.name); setOpen(false); }} className="w-full px-3 py-2.5 text-left text-sm hover:bg-sand">{o.name}</button>
+              <button type="button" onClick={() => { onChange(o.name); setOpen(false); }} className="w-full px-3 py-2.5 text-left text-sm hover:bg-bg">{o.name}</button>
             </li>
           ))}
         </ul>

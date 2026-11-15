@@ -5,7 +5,7 @@ export function Avatar({ path, name, size = 36 }: { path: string | null | undefi
   const url = path?.startsWith("http") ? path : photoUrl(path, "avatars");
   return (
     <span
-      className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-sand font-serif text-muted"
+      className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-placeholder font-serif text-mocha-text"
       style={{ width: size, height: size, fontSize: size * 0.42 }}
     >
       {url ? (

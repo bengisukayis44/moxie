@@ -53,7 +53,7 @@ export function AdvancedDetails({
                     return (
                       <button key={o.value} type="button" onClick={() => toggle(def, o.value)} className="flex flex-col items-center gap-1">
                         <span
-                          className={`h-8 w-8 rounded-full border ${on ? "ring-2 ring-terracotta ring-offset-2 ring-offset-card" : "border-line"}`}
+                          className={`h-8 w-8 rounded-full border ${on ? "ring-2 ring-royal ring-offset-2 ring-offset-card" : "border-line"}`}
                           style={{ background: o.swatch ?? undefined }}
                         />
                         <span className={`text-[10px] leading-tight ${on ? "font-semibold" : "text-muted"}`}>{o.label}</span>
@@ -70,7 +70,7 @@ export function AdvancedDetails({
                         key={o.value}
                         type="button"
                         onClick={() => toggle(def, o.value)}
-                        className={`rounded-full border px-3 py-1.5 text-xs ${on ? "border-terracotta bg-terracotta text-cream" : "border-line bg-cream"}`}
+                        className={`rounded-full border px-3 py-1.5 text-xs ${on ? "border-royal bg-royal text-bg" : "border-line bg-bg"}`}
                       >
                         {o.label}
                       </button>

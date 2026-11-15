@@ -21,7 +21,7 @@ function useRpc() {
 function Btn({ children, onClick, tone }: { children: React.ReactNode; onClick: () => unknown; tone?: "danger" | "primary" }) {
   return (
     <button type="button" onClick={onClick}
-      className={`rounded-full border px-3 py-1.5 text-xs ${tone === "danger" ? "border-terracotta text-terracotta" : tone === "primary" ? "border-ink bg-ink text-cream" : "border-line"}`}>
+      className={`rounded-full border px-3 py-1.5 text-xs ${tone === "danger" ? "border-royal text-royal" : tone === "primary" ? "border-ink bg-ink text-bg" : "border-line"}`}>
       {children}
     </button>
   );
@@ -49,7 +49,7 @@ export function Queue({ tryons }: { tryons: TryonDetail[] }) {
               <p><b>@{t.user.username}</b></p>
               <p className="truncate text-muted">{t.look.title}</p>
               <p className="mt-1 text-xs text-muted">{t.photos.length} fotoğraf · {t.items.filter((i) => i.worn !== "not_worn").length} parça</p>
-              <button type="button" onClick={() => setOpen(open === t.id ? null : t.id)} className="mt-1 text-xs font-semibold text-terracotta">{open === t.id ? "Kapat" : "İncele"}</button>
+              <button type="button" onClick={() => setOpen(open === t.id ? null : t.id)} className="mt-1 text-xs font-semibold text-royal">{open === t.id ? "Kapat" : "İncele"}</button>
             </div>
           </div>
           {open === t.id && <div className="border-t border-line pb-3"><TryonView tryon={t} showLookLink={false} /></div>}
@@ -100,7 +100,7 @@ export function Reports({ groups }: { groups: ReportGroup[] }) {
               <div className="min-w-0 flex-1 text-sm">
                 <p><span className="eyebrow">{TYPE_LABEL[g.target_type]}</span> · <span className="text-muted">{g.target?.status ?? "silinmiş"}</span></p>
                 <p className="truncate font-semibold">{g.target?.title ?? "—"} {g.target?.owner && <span className="font-normal text-muted">@{g.target.owner}</span>}</p>
-                <p className="text-terracotta">{g.open_count} açık şikayet</p>
+                <p className="text-royal">{g.open_count} açık şikayet</p>
                 <ul className="mt-1 space-y-0.5 text-xs text-muted">
                   {g.reasons.slice(0, 4).map((r, i) => <li key={i} className={r.resolved ? "line-through" : ""}>• {r.reason}</li>)}
                 </ul>
@@ -152,7 +152,7 @@ export function Users({ users, q }: { users: AdminUser[]; q: string }) {
                 <b className="block truncate">@{u.username}</b>
                 <span className="text-xs text-muted">{u.tryon_count} deneme · {u.follower_count} takipçi{u.is_suspended ? " · askıda" : ""}</span>
               </Link>
-              <select value={u.role} onChange={(e) => call("admin_set_user", { p_id: u.id, p_role: e.target.value })} className="rounded-lg border border-line bg-cream px-2 py-1 text-xs">
+              <select value={u.role} onChange={(e) => call("admin_set_user", { p_id: u.id, p_role: e.target.value })} className="rounded-lg border border-line bg-bg px-2 py-1 text-xs">
                 <option value="user">Kullanıcı</option>
                 <option value="creator">Creator</option>
                 <option value="admin">Admin</option>
@@ -191,7 +191,7 @@ export function ProductsCheck({ products }: { products: CheckProduct[] }) {
               {p.price != null && ` · ${formatPrice(p.price)}`}
             </p>
             <div className="mt-2 flex flex-wrap gap-2">
-              {(p.affiliate_url ?? p.url) ? <a href={(p.affiliate_url ?? p.url)!} target="_blank" rel="noopener" className="rounded-full border border-line px-3 py-1.5 text-xs">Linki aç ↗</a> : <span className="text-xs text-terracotta">Link yok</span>}
+              {(p.affiliate_url ?? p.url) ? <a href={(p.affiliate_url ?? p.url)!} target="_blank" rel="noopener" className="rounded-full border border-line px-3 py-1.5 text-xs">Linki aç ↗</a> : <span className="text-xs text-royal">Link yok</span>}
               <Btn tone="primary" onClick={() => call("admin_mark_product", { p_id: p.id, p_in_stock: true })}>Satışta ✓</Btn>
               <Btn tone="danger" onClick={() => call("admin_mark_product", { p_id: p.id, p_in_stock: false })}>Satışta değil</Btn>
             </div>
@@ -220,7 +220,7 @@ export function Featured({ looks }: { looks: LookCard[] }) {
               <span className="text-xs text-muted">{l.tryon_count} deneme · {l.save_count} kayıt</span>
             </Link>
             <button type="button" onClick={() => call("admin_set_featured", { p_look: l.id, p_featured: !l.is_featured })}
-              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold ${l.is_featured ? "bg-terracotta text-cream" : "border border-line"}`}>
+              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold ${l.is_featured ? "bg-royal text-bg" : "border border-line"}`}>
               {l.is_featured ? "★ Öne çıkan" : "Öne çıkar"}
             </button>
           </li>
@@ -284,7 +284,7 @@ function BrandRow({ brand, all }: { brand: Brand; all: Brand[] }) {
           <input value={name} onChange={(e) => setName(e.target.value)} className="w-full rounded-lg border border-line px-2 py-1.5" />
           <input value={aliases} onChange={(e) => setAliases(e.target.value)} placeholder="Takma adlar (virgülle)" className="w-full rounded-lg border border-line px-2 py-1.5" />
           <div className="flex gap-2">
-            <button type="button" onClick={save} className="rounded-full bg-ink px-3 py-1 text-cream">Kaydet</button>
+            <button type="button" onClick={save} className="rounded-full bg-ink px-3 py-1 text-bg">Kaydet</button>
             <button type="button" onClick={() => setEdit(false)} className="rounded-full border border-line px-3 py-1">Vazgeç</button>
           </div>
         </div>
@@ -294,11 +294,11 @@ function BrandRow({ brand, all }: { brand: Brand; all: Brand[] }) {
             <p className="font-semibold">{brand.name} <span className="font-normal text-muted">· {brand.post_count}</span></p>
             {brand.aliases.length > 0 && <p className="truncate text-xs text-muted">{brand.aliases.join(", ")}</p>}
           </div>
-          <button type="button" onClick={() => setEdit(true)} className="shrink-0 text-terracotta">Düzenle</button>
+          <button type="button" onClick={() => setEdit(true)} className="shrink-0 text-royal">Düzenle</button>
         </div>
       )}
       <div className="mt-2 flex gap-2">
-        <select value={target} onChange={(e) => setTarget(e.target.value)} className="min-w-0 flex-1 rounded-lg border border-line bg-cream px-2 py-1 text-xs">
+        <select value={target} onChange={(e) => setTarget(e.target.value)} className="min-w-0 flex-1 rounded-lg border border-line bg-bg px-2 py-1 text-xs">
           <option value="">Şununla birleştir…</option>
           {all.filter((b) => b.id !== brand.id).map((b) => <option key={b.id} value={b.id}>{b.name}</option>)}
         </select>

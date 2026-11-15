@@ -38,7 +38,7 @@ export function ProductEditor({ productId, initial, categories, attributeDefs, o
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
-  const field = "w-full rounded-xl border border-line bg-cream px-3 py-2.5 text-[15px]";
+  const field = "w-full rounded-xl border border-line bg-bg px-3 py-2.5 text-[15px]";
   const set = (patch: Partial<ProductDraft>) => setP((x) => ({ ...x, ...patch }));
 
   async function pickImage(file: File) {
@@ -101,11 +101,11 @@ export function ProductEditor({ productId, initial, categories, attributeDefs, o
       </div>
       <p className="text-[11px] text-muted">Görsel: sadece mağazanın affiliate programının izin verdiği görseller veya kendi çekimimiz.</p>
       <AdvancedDetails defs={attributeDefs} category={p.category} value={p.attributes} onChange={(attributes) => set({ attributes })} />
-      {error && <p className="rounded-lg bg-terracotta/10 px-3 py-2 text-sm text-terracotta">{error}</p>}
+      {error && <p className="rounded-lg bg-error/10 px-3 py-2 text-sm text-error">{error}</p>}
       <div className="flex gap-2">
         <button type="button" onClick={onCancel} className="flex-1 rounded-full border border-line py-3 text-sm">Vazgeç</button>
         <button type="button" onClick={save} disabled={busy || uploading || !p.brand.trim() || !p.name.trim() || !p.category}
-          className="flex-1 rounded-full bg-terracotta py-3 text-sm font-semibold text-cream disabled:opacity-40">
+          className="flex-1 rounded-full bg-royal py-3 text-sm font-semibold text-bg disabled:opacity-40">
           {busy ? "Kaydediliyor…" : productId ? "Ürünü güncelle" : "Ürünü ekle"}
         </button>
       </div>

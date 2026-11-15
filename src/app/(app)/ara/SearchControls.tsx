@@ -47,7 +47,7 @@ export function SearchControls({ tab, categories, styles, loggedIn, brandName }:
       <div className="no-scrollbar mt-3 flex gap-5 overflow-x-auto border-b border-line text-sm">
         {TABS.map(([key, label]) => (
           <button key={key} type="button" onClick={() => set({ sekme: key === "kombinler" ? null : key })}
-            className={`-mb-px shrink-0 border-b-2 pb-2 ${tab === key ? "border-terracotta font-semibold" : "border-transparent text-muted"}`}>
+            className={`-mb-px shrink-0 border-b-2 pb-2 ${tab === key ? "border-royal font-semibold" : "border-transparent text-muted"}`}>
             {label}
           </button>
         ))}
@@ -87,7 +87,7 @@ export function SearchControls({ tab, categories, styles, loggedIn, brandName }:
                         const on = sp.get("tarz") === s.slug;
                         return (
                           <button key={s.slug} type="button" onClick={() => set({ tarz: on ? null : s.slug })}
-                            className={`rounded-full border px-3 py-1 text-xs ${on ? "border-terracotta bg-terracotta text-cream" : "border-line"}`}>{s.label}</button>
+                            className={`rounded-full border px-3 py-1 text-xs ${on ? "border-royal bg-royal text-bg" : "border-line"}`}>{s.label}</button>
                         );
                       })}
                     </div>
@@ -108,12 +108,12 @@ export function SearchControls({ tab, categories, styles, loggedIn, brandName }:
 
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
-    <button type="button" onClick={onClick} className={`shrink-0 rounded-full border px-3 py-1.5 text-sm ${active ? "border-ink bg-ink text-cream" : "border-line bg-card"}`}>{children}</button>
+    <button type="button" onClick={onClick} className={`shrink-0 rounded-full border px-3 py-1.5 text-sm ${active ? "border-ink bg-ink text-bg" : "border-line bg-card"}`}>{children}</button>
   );
 }
 
 function Range({ label, min, max, sp, set }: { label: string; min: string; max: string; sp: URLSearchParams; set: (p: Record<string, string | null>) => void }) {
-  const cls = "w-full min-w-0 rounded-xl border border-line bg-cream px-3 py-2 text-[15px]";
+  const cls = "w-full min-w-0 rounded-xl border border-line bg-bg px-3 py-2 text-[15px]";
   return (
     <div>
       <p className="mb-1 text-sm text-muted">{label}</p>

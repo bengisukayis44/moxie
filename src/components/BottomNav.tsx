@@ -22,12 +22,12 @@ export function BottomNav({ username, unread }: { username: string | null; unrea
           <li key={label} className="flex-1">
             <Link href={href} aria-label={label} className={`relative flex flex-col items-center gap-0.5 py-2 text-[10px] ${active ? "text-ink" : "text-muted"}`}>
               {accent ? (
-                <span className="flex h-7 w-11 items-center justify-center rounded-full bg-terracotta text-cream"><Icon className="h-5 w-5" /></span>
+                <span className="flex h-7 w-11 items-center justify-center rounded-full bg-royal text-bg"><Icon className="h-5 w-5" /></span>
               ) : (
                 <Icon className="h-6 w-6" />
               )}
               {badge ? (
-                <span className="absolute right-[calc(50%-18px)] top-1 min-w-4 rounded-full bg-terracotta px-1 text-center text-[10px] font-bold leading-4 text-cream">
+                <span className="absolute right-[calc(50%-18px)] top-1 min-w-4 rounded-full bg-royal px-1 text-center text-[10px] font-bold leading-4 text-bg">
                   {badge > 9 ? "9+" : badge}
                 </span>
               ) : null}

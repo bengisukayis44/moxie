@@ -68,7 +68,7 @@ export default async function ProfilePage(props: PageProps<"/u/[username]">) {
         <div className="min-w-0 flex-1 pt-1">
           <h1 className="truncate font-serif text-2xl leading-tight">{profile.display_name ?? profile.username}</h1>
           <p className="text-sm text-muted">@{profile.username}</p>
-          {badge && <span className="mt-1 inline-block rounded-full bg-sand px-2.5 py-0.5 text-[11px] font-semibold">{badge}</span>}
+          {badge && <span className="mt-1 inline-block rounded-full border border-line px-2.5 py-0.5 text-[11px] font-semibold">{badge}</span>}
         </div>
         {profile.is_me ? (
           <Link href="/ayarlar" className="rounded-full p-2 text-muted" aria-label="Ayarlar"><GearIcon className="h-6 w-6" /></Link>
@@ -83,13 +83,13 @@ export default async function ProfilePage(props: PageProps<"/u/[username]">) {
         <span><b>{profile.tryon_count}</b> <span className="text-muted">deneme</span></span>
         {!profile.is_me && !profile.i_blocked && <span className="ml-auto"><FollowButton userId={profile.id} following={profile.is_following} /></span>}
       </div>
-      {near && <span className="mt-2 inline-block rounded-full bg-terracotta/10 px-2.5 py-0.5 text-xs font-semibold text-terracotta">{near}</span>}
+      {near && <span className="mt-2 inline-block rounded-full bg-lilac px-2.5 py-0.5 text-xs font-semibold text-royal-dark">{near}</span>}
       {profile.bio && <p className="mt-3 whitespace-pre-line text-[15px] leading-relaxed">{profile.bio}</p>}
 
-      {profile.i_blocked && <p className="mt-4 rounded-xl bg-sand px-3 py-2 text-sm">Bu hesabı engelledin. İçeriklerini görmüyorsun.</p>}
+      {profile.i_blocked && <p className="mt-4 rounded-xl bg-lilac px-3 py-2 text-sm text-royal-dark">Bu hesabı engelledin. İçeriklerini görmüyorsun.</p>}
 
       {profile.is_me && myWarnings?.map((w) => (
-        <div key={w.id} className="mt-4 rounded-[var(--radius-card)] border border-terracotta bg-terracotta/5 p-3 text-sm">
+        <div key={w.id} className="mt-4 rounded-[var(--radius-card)] bg-lilac p-3 text-sm text-royal-dark">
           <p className="eyebrow mb-1">Ekipten uyarı</p>
           {w.message}
         </div>
@@ -101,13 +101,13 @@ export default async function ProfilePage(props: PageProps<"/u/[username]">) {
           <section className="mt-4 rounded-[var(--radius-card)] border border-line bg-card p-4">
             <p className="eyebrow mb-2">Ölçüler</p>
             <MeasurementChips m={profile.measurements} extra={[["Genelde üst", profile.usual_sizes.top], ["Genelde alt", profile.usual_sizes.bottom]]} />
-            {profile.is_me && <Link href="/ayarlar/profil" className="mt-3 inline-block text-sm font-semibold text-terracotta">Profili düzenle →</Link>}
+            {profile.is_me && <Link href="/ayarlar/profil" className="mt-3 inline-block text-sm font-semibold text-royal">Profili düzenle →</Link>}
           </section>
 
           <nav className="mt-5 flex gap-6 border-b border-line text-sm">
             {tabKeys.map((k) => (
               <Link key={k} href={k === "denemeler" ? `/u/${profile.username}` : `/u/${profile.username}?sekme=${k}`}
-                className={`-mb-px border-b-2 pb-2 ${tab === k ? "border-terracotta font-semibold" : "border-transparent text-muted"}`}>
+                className={`-mb-px border-b-2 pb-2 ${tab === k ? "border-royal font-semibold" : "border-transparent text-muted"}`}>
                 {{ denemeler: "Denemeleri", kombinler: "Kombinleri", kaydedilenler: "Kaydettikleri" }[k]}
               </Link>
             ))}

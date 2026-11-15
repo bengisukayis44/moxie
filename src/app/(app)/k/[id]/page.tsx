@@ -46,7 +46,7 @@ export default async function LookPage(props: PageProps<"/k/[id]">) {
         <BackButton className="absolute left-3 top-3 z-10" />
         <Gallery photos={look.photos.map((path) => ({ path }))} bucket="look-photos" alt={look.title} />
       </div>
-      {STATUS_NOTE[look.status] && <p className="bg-terracotta px-4 py-2 text-sm text-cream">{STATUS_NOTE[look.status]}</p>}
+      {STATUS_NOTE[look.status] && <p className="bg-royal px-4 py-2 text-sm text-bg">{STATUS_NOTE[look.status]}</p>}
 
       <div className="space-y-6 px-4 pt-4">
         <section>
@@ -67,7 +67,7 @@ export default async function LookPage(props: PageProps<"/k/[id]">) {
           {look.style_tags.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-1.5">
               {look.style_tags.map((s) => (
-                <Link key={s.slug} href={`/ara?tarz=${s.slug}`} className="rounded-full bg-sand px-3 py-1 text-xs">{s.label}</Link>
+                <Link key={s.slug} href={`/ara?tarz=${s.slug}`} className="rounded-full border border-line bg-card px-3 py-1 text-xs text-mocha-text">{s.label}</Link>
               ))}
             </div>
           )}
@@ -86,9 +86,9 @@ export default async function LookPage(props: PageProps<"/k/[id]">) {
             {look.tryon_total > 0 && <span className="text-sm text-muted">{look.tryon_total} kişi</span>}
           </div>
           {look.my_tryon && look.my_tryon.status !== "published" && (
-            <Link href={`/d/${look.my_tryon.id}`} className="mb-3 block rounded-xl bg-sand px-3 py-2 text-sm">
+            <Link href={`/d/${look.my_tryon.id}`} className="mb-3 block rounded-xl bg-lilac px-3 py-2 text-sm text-royal-dark">
               {look.my_tryon.status === "pending" ? "Denemen incelemede; onaylanınca burada görünecek." : "Denemen yayında değil."}{" "}
-              <span className="font-semibold text-terracotta">Görüntüle</span>
+              <span className="font-semibold text-royal">Görüntüle</span>
             </Link>
           )}
           <TryonStrip lookId={look.id} tryons={look.tryons} total={look.tryon_total} myTryonId={look.my_tryon?.id ?? null} />

@@ -67,7 +67,7 @@ export default async function FeedPage(props: PageProps<"/">) {
 
   return (
     <main>
-      <header className="sticky top-0 z-30 bg-cream/95 px-4 pt-3 backdrop-blur">
+      <header className="sticky top-0 z-30 bg-bg/95 px-4 pt-3 backdrop-blur">
         <div className="flex items-center justify-between">
           <Logo />
           {!viewer && <Link href="/giris" className="rounded-full border border-ink px-3 py-1 text-sm">Giriş yap</Link>}
@@ -75,7 +75,7 @@ export default async function FeedPage(props: PageProps<"/">) {
         <nav className="mt-2 flex gap-6 border-b border-line text-sm">
           {TABS.map(([k, label]) => (
             <Link key={k} href={k === "kesfet" ? "/" : `/?tab=${k}`}
-              className={`-mb-px border-b-2 pb-2 ${tab === k ? "border-terracotta font-semibold text-ink" : "border-transparent text-muted"}`}>
+              className={`-mb-px border-b-2 pb-2 ${tab === k ? "border-royal font-semibold text-ink" : "border-transparent text-muted"}`}>
               {label}
             </Link>
           ))}

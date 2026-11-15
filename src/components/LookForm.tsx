@@ -103,7 +103,7 @@ export function LookForm({ userId, categories, attributeDefs, styleTags, initial
         <h1 className="mt-5 font-serif text-3xl">Kombin yayında!</h1>
         <p className="mt-2 max-w-xs text-muted">Bu kombini sen de giydin mi? İlk denemeyi sen ekle, başkaları da cesaretlensin.</p>
         <div className="mt-8 w-full space-y-2">
-          <Link href={`/k/${savedId}/dene`} className="block rounded-full bg-terracotta py-4 font-semibold text-cream">İlk denemeyi ekle</Link>
+          <Link href={`/k/${savedId}/dene`} className="block rounded-full bg-royal py-4 font-semibold text-bg">İlk denemeyi ekle</Link>
           <Link href={`/k/${savedId}`} className="block rounded-full border border-ink py-4 font-semibold">Kombine git</Link>
         </div>
       </main>
@@ -130,9 +130,9 @@ export function LookForm({ userId, categories, attributeDefs, styleTags, initial
             {photos.map((p, i) => (
               <div key={p.key} className="relative aspect-[3/4] overflow-hidden rounded-xl bg-placeholder">
                 <Image src={p.preview} alt="" fill unoptimized={!p.existing} sizes="33vw" className={`object-cover ${p.path ? "" : "opacity-50"}`} />
-                {i === 0 && <span className="absolute left-1.5 top-1.5 rounded bg-ink/60 px-1.5 text-[10px] text-cream">Kapak</span>}
-                {p.failed && <span className="absolute inset-0 flex items-center justify-center bg-terracotta/70 text-xs text-cream">Yüklenemedi</span>}
-                <button type="button" onClick={() => removePhoto(p.key)} className="absolute right-1.5 top-1.5 rounded-full bg-ink/60 p-1 text-cream" aria-label="Kaldır"><CloseIcon className="h-3.5 w-3.5" /></button>
+                {i === 0 && <span className="absolute left-1.5 top-1.5 rounded bg-ink/60 px-1.5 text-[10px] text-bg">Kapak</span>}
+                {p.failed && <span className="absolute inset-0 flex items-center justify-center bg-error/80 text-xs text-white">Yüklenemedi</span>}
+                <button type="button" onClick={() => removePhoto(p.key)} className="absolute right-1.5 top-1.5 rounded-full bg-ink/60 p-1 text-bg" aria-label="Kaldır"><CloseIcon className="h-3.5 w-3.5" /></button>
                 <div className="absolute inset-x-1.5 bottom-1.5 flex justify-between">
                   <button type="button" disabled={i === 0} onClick={() => setPhotos((l) => move(l, i, -1))} className="rounded-full bg-card/90 p-1 disabled:invisible" aria-label="Sola taşı"><ArrowLeftIcon className="h-3.5 w-3.5" /></button>
                   <button type="button" disabled={i === photos.length - 1} onClick={() => setPhotos((l) => move(l, i, 1))} className="rounded-full bg-card/90 p-1 disabled:invisible" aria-label="Sağa taşı"><ArrowRightIcon className="h-3.5 w-3.5" /></button>
@@ -157,7 +157,7 @@ export function LookForm({ userId, categories, attributeDefs, styleTags, initial
           <ul className="mt-5 space-y-2">
             {items.map((p, i) => (
               <li key={p.id} className="flex items-center gap-3 rounded-[var(--radius-card)] border border-line bg-card p-2.5">
-                <div className="relative h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-sand">
+                <div className="relative h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-placeholder">
                   {p.image_path && <Image src={photoUrl(p.image_path, "product-images")!} alt="" fill sizes="44px" className="object-cover" />}
                 </div>
                 <div className="min-w-0 flex-1 text-sm">
@@ -203,7 +203,7 @@ export function LookForm({ userId, categories, attributeDefs, styleTags, initial
                 const on = tags.includes(s.slug);
                 return (
                   <button key={s.slug} type="button" onClick={() => setTags((t) => (on ? t.filter((x) => x !== s.slug) : [...t, s.slug]))}
-                    className={`rounded-full border px-3 py-1.5 text-sm ${on ? "border-terracotta bg-terracotta text-cream" : "border-line bg-card"}`}>
+                    className={`rounded-full border px-3 py-1.5 text-sm ${on ? "border-royal bg-royal text-bg" : "border-line bg-card"}`}>
                     {s.label}
                   </button>
                 );
@@ -214,13 +214,13 @@ export function LookForm({ userId, categories, attributeDefs, styleTags, initial
             <p className="text-sm font-semibold">İlham kaynağı notu <span className="font-normal text-muted">· sadece ekip görür</span></p>
             <textarea value={note} onChange={(e) => setNote(e.target.value)} maxLength={1000} rows={2} placeholder="ör. Pinterest'teki @… paylaşımından ilham" className={`${field} mt-1`} />
           </div>
-          {error && <p className="rounded-lg bg-terracotta/10 px-3 py-2 text-sm text-terracotta">{error}</p>}
+          {error && <p className="rounded-lg bg-error/10 px-3 py-2 text-sm text-error">{error}</p>}
           <div className="sticky bottom-20 space-y-2 pb-2 pt-4">
-            <button type="button" disabled={busy || !title.trim()} onClick={() => save("published")} className="w-full rounded-full bg-terracotta py-4 font-semibold text-cream shadow-lg disabled:opacity-40">
+            <button type="button" disabled={busy || !title.trim()} onClick={() => save("published")} className="w-full rounded-full bg-royal py-4 font-semibold text-bg shadow-lg disabled:opacity-40">
               {busy ? "Kaydediliyor…" : initial?.status === "published" ? "Kaydet" : "Yayınla"}
             </button>
             {(!initial || initial.status === "draft") && (
-              <button type="button" disabled={busy || !title.trim()} onClick={() => save("draft")} className="w-full rounded-full border border-ink bg-cream py-3 font-semibold disabled:opacity-40">Taslak olarak kaydet</button>
+              <button type="button" disabled={busy || !title.trim()} onClick={() => save("draft")} className="w-full rounded-full border border-ink bg-bg py-3 font-semibold disabled:opacity-40">Taslak olarak kaydet</button>
             )}
           </div>
         </section>
@@ -232,7 +232,7 @@ export function LookForm({ userId, categories, attributeDefs, styleTags, initial
 function Next({ children, disabled, onClick }: { children: React.ReactNode; disabled?: boolean; onClick: () => void }) {
   return (
     <div className="sticky bottom-20 mt-8 pb-2">
-      <button type="button" disabled={disabled} onClick={onClick} className="w-full rounded-full bg-terracotta py-4 font-semibold text-cream shadow-lg disabled:opacity-40">{children}</button>
+      <button type="button" disabled={disabled} onClick={onClick} className="w-full rounded-full bg-royal py-4 font-semibold text-bg shadow-lg disabled:opacity-40">{children}</button>
     </div>
   );
 }
@@ -249,7 +249,7 @@ function ProductSearch({ exclude, onPick, onCancel }: { exclude: string[]; onPic
   }, [q, exclude]);
   return (
     <div className="mt-3 rounded-[var(--radius-card)] border border-line bg-card p-3">
-      <div className="flex items-center gap-2 rounded-full border border-line bg-cream px-3 py-2">
+      <div className="flex items-center gap-2 rounded-full border border-line bg-bg px-3 py-2">
         <SearchIcon className="h-4 w-4 text-muted" />
         <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Marka veya ürün ara" className="min-w-0 flex-1 bg-transparent text-[15px] outline-none" />
         <button type="button" onClick={onCancel} className="text-sm text-muted">Vazgeç</button>
@@ -258,7 +258,7 @@ function ProductSearch({ exclude, onPick, onCancel }: { exclude: string[]; onPic
         {results.map((p) => (
           <li key={p.id}>
             <button type="button" onClick={() => onPick(p)} className="flex w-full items-center gap-3 py-2 text-left">
-              <div className="relative h-12 w-9 shrink-0 overflow-hidden rounded bg-sand">
+              <div className="relative h-12 w-9 shrink-0 overflow-hidden rounded bg-placeholder">
                 {p.image_path && <Image src={photoUrl(p.image_path, "product-images")!} alt="" fill sizes="36px" className="object-cover" />}
               </div>
               <span className="min-w-0 text-sm"><b className="block truncate">{p.brand}</b><span className="block truncate">{p.name}</span></span>

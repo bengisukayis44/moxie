@@ -22,15 +22,15 @@ export default async function AddPage() {
     <main className="px-4 pt-4">
       {viewer.canCreateLooks && (
         <section className="mb-6 grid grid-cols-2 gap-3">
-          <Link href="/yeni-kombin" className="rounded-[var(--radius-card)] bg-ink p-4 text-cream">
+          <Link href="/yeni-kombin" className="rounded-[var(--radius-card)] bg-ink p-4 text-bg">
             <span className="block text-2xl">✨</span>
             <span className="mt-2 block font-serif text-lg">Kombin oluştur</span>
-            <span className="text-xs text-cream/70">Linkli ürünlerle yeni kombin</span>
+            <span className="text-xs text-bg/70">Linkli ürünlerle yeni kombin</span>
           </Link>
-          <a href="#dene" className="rounded-[var(--radius-card)] bg-terracotta p-4 text-cream">
+          <a href="#dene" className="rounded-[var(--radius-card)] bg-royal p-4 text-bg">
             <span className="block text-2xl">📸</span>
             <span className="mt-2 block font-serif text-lg">Deneme ekle</span>
-            <span className="text-xs text-cream/80">Bir kombini üzerinde göster</span>
+            <span className="text-xs text-bg/80">Bir kombini üzerinde göster</span>
           </a>
         </section>
       )}

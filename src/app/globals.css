@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #1f1b18;
-  --color-cream: #f5f0ea;
-  --color-sand: #ece4d8;
-  --color-card: #fffbf6;
-  --color-terracotta: #a8432c;
-  --color-peach: #e8a48a;
-  --color-muted: #7a6f66;
-  --color-placeholder: #d9c7b4;
-  --color-line: #e3d8ca;
+  /* "Kraliyet moru" paleti. Koyu mod v1'de yok; token'lar CSS değişkeni olduğu için ileride eklenebilir. */
+  --color-bg: #f9f4f2;          /* sayfa arka planı */
+  --color-card: #fffcfb;        /* kart arka planı */
+  --color-blush: #f4d4dc;       /* yumuşak vurgu zemini, "İlk deneyen", seçili durumlar */
+  --color-lilac: #e4d8f2;       /* "Sana en yakın", bilgi zeminleri */
+  --color-mocha: #a47864;       /* ikincil vurgu: ikon, ayırıcı detay, kategori etiketi */
+  --color-mocha-text: #7a5a4c;  /* fit/kumaş notları gibi sıcak ikincil metin */
+  --color-royal: #5b2a86;       /* ana marka rengi: birincil butonlar, aktif sekme, logo */
+  --color-royal-dark: #3e1d5e;  /* lilac/blush üzerindeki metin, basılı buton */
+  --color-ink: #221a2b;         /* ana metin */
+  --color-muted: #75697a;       /* ikincil metin, tarih, sayaç */
+  --color-line: #eadfe3;        /* ince kenarlık, ayırıcı */
+  --color-placeholder: #eadfda; /* görsel yüklenirken */
+  --color-error: #b3261e;       /* sadece form hataları */
 
   --font-serif: var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
@@ -22,18 +27,18 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
-/* Küçük etiket stili: büyük harf, geniş aralık, terracotta */
+/* Küçük etiket stili: büyük harf, geniş aralık, vurgu rengi */
 .eyebrow {
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-terracotta);
+  color: var(--color-royal);
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }

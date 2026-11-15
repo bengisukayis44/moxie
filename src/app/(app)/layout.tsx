@@ -13,7 +13,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
     unread = data ?? 0;
   }
   return (
-    <div className="mx-auto min-h-dvh max-w-md bg-cream pb-24">
+    <div className="mx-auto min-h-dvh max-w-md bg-bg pb-24">
       {children}
       <BottomNav username={viewer?.profile.username ?? null} unread={unread} />
     </div>

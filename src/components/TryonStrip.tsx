@@ -27,13 +27,13 @@ export function TryonStrip({ lookId, tryons, total, myTryonId }: {
 
   if (tryons.length === 0) {
     return (
-      <Link href={tryHref} className="flex items-center gap-4 rounded-[var(--radius-card)] border-2 border-dashed border-terracotta/50 bg-terracotta/5 p-5">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-terracotta text-cream">
+      <Link href={tryHref} className="flex items-center gap-4 rounded-[var(--radius-card)] bg-blush p-5 text-royal-dark">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-royal text-bg">
           <PlusIcon className="h-7 w-7" />
         </span>
         <span>
           <span className="block font-serif text-xl">İlk deneyen sen ol</span>
-          <span className="text-sm text-muted">Bu kombini henüz kimse denemedi. Üzerinde nasıl durduğunu ve aldığın bedeni paylaş.</span>
+          <span className="text-sm">Bu kombini henüz kimse denemedi. Üzerinde nasıl durduğunu ve aldığın bedeni paylaş.</span>
         </span>
       </Link>
     );
@@ -49,8 +49,8 @@ export function TryonStrip({ lookId, tryons, total, myTryonId }: {
         ))}
         {!myTryonId && (
           <Link href={tryHref} className="flex w-36 shrink-0 flex-col">
-            <span className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-[var(--radius-card)] border-2 border-dashed border-terracotta/50 bg-terracotta/5 text-terracotta">
-              <PlusIcon className="h-8 w-8" />
+            <span className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-[var(--radius-card)] bg-blush text-royal-dark">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-bg"><PlusIcon className="h-6 w-6" /></span>
               <span className="font-semibold">Sen de dene</span>
             </span>
           </Link>
@@ -61,7 +61,7 @@ export function TryonStrip({ lookId, tryons, total, myTryonId }: {
       {open && (
         <Sheet onClose={() => setOpen(null)} tall>
           <div className="sticky top-0 z-10 flex items-center justify-between bg-card/95 px-4 py-3 backdrop-blur">
-            <Link href={`/d/${open.id}`} className="text-sm font-semibold text-terracotta">Tam sayfada aç</Link>
+            <Link href={`/d/${open.id}`} className="text-sm font-semibold text-royal">Tam sayfada aç</Link>
             <button type="button" onClick={() => setOpen(null)} aria-label="Kapat"><CloseIcon className="h-5 w-5" /></button>
           </div>
           <TryonView tryon={open} showLookLink={false} />

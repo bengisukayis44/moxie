@@ -15,16 +15,16 @@ export function CompletionCard({ userId, percent, href }: { userId: string; perc
     await createClient().from("profile_private").update({ completion_card_hidden_until: until }).eq("user_id", userId);
   }
   return (
-    <div className="relative rounded-[var(--radius-card)] bg-ink p-4 text-cream">
-      <button type="button" onClick={dismiss} className="absolute right-3 top-3 text-cream/60" aria-label="Kapat">
+    <div className="relative rounded-[var(--radius-card)] bg-ink p-4 text-bg">
+      <button type="button" onClick={dismiss} className="absolute right-3 top-3 text-bg/60" aria-label="Kapat">
         <CloseIcon className="h-4 w-4" />
       </button>
       <p className="font-serif text-lg">Profilin %{percent} tamam</p>
-      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-cream/15">
-        <div className="h-full rounded-full bg-peach" style={{ width: `${percent}%` }} />
+      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-bg/15">
+        <div className="h-full rounded-full bg-blush" style={{ width: `${percent}%` }} />
       </div>
-      <p className="mt-2 text-sm text-cream/70">Birkaç bilgi daha ekle, sana benzeyenleri daha iyi bulalım.</p>
-      <Link href={href} className="mt-3 inline-block rounded-full bg-peach px-4 py-1.5 text-sm font-semibold text-ink">Tamamla</Link>
+      <p className="mt-2 text-sm text-bg/70">Birkaç bilgi daha ekle, sana benzeyenleri daha iyi bulalım.</p>
+      <Link href={href} className="mt-3 inline-block rounded-full bg-blush px-4 py-1.5 text-sm font-semibold text-royal-dark">Tamamla</Link>
     </div>
   );
 }

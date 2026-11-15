@@ -67,8 +67,8 @@ export default async function AdminPage(props: PageProps<"/admin">) {
         {TABS.map(([k, label, stat]) => {
           const n = stat ? stats?.[stat] : 0;
           return (
-            <Link key={k} href={`/admin?sekme=${k}`} className={`-mb-px shrink-0 border-b-2 pb-2 ${tab === k ? "border-terracotta font-semibold" : "border-transparent text-muted"}`}>
-              {label}{n ? <span className="ml-1 rounded-full bg-terracotta px-1.5 text-[10px] font-bold text-cream">{n}</span> : null}
+            <Link key={k} href={`/admin?sekme=${k}`} className={`-mb-px shrink-0 border-b-2 pb-2 ${tab === k ? "border-royal font-semibold" : "border-transparent text-muted"}`}>
+              {label}{n ? <span className="ml-1 rounded-full bg-royal px-1.5 text-[10px] font-bold text-bg">{n}</span> : null}
             </Link>
           );
         })}

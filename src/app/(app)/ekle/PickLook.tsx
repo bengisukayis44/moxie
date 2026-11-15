@@ -39,7 +39,7 @@ export function PickLook({ saved, explore }: { saved: LookCard[]; explore: LookC
                     <span className="block truncate text-sm font-semibold">{l.title}</span>
                     <span className="text-xs text-muted">{l.tryon_count ? `${l.tryon_count} kişi denedi` : "Henüz denenmedi"}</span>
                   </span>
-                  <span className="shrink-0 rounded-full bg-terracotta px-3 py-1.5 text-xs font-semibold text-cream">Dene</span>
+                  <span className="shrink-0 rounded-full bg-royal px-3 py-1.5 text-xs font-semibold text-bg">Dene</span>
                 </Link>
               </li>
             ))}

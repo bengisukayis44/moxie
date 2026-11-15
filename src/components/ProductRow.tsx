@@ -11,7 +11,7 @@ export function ProductRow({ product, from, sourceId, children }: {
   return (
     <div className={`rounded-[var(--radius-card)] border border-line bg-card p-3 ${product.in_stock ? "" : "opacity-70"}`}>
       <div className="flex gap-3">
-        <Link href={`/urun/${product.id}`} className="relative h-20 w-16 shrink-0 overflow-hidden rounded-lg bg-sand">
+        <Link href={`/urun/${product.id}`} className="relative h-20 w-16 shrink-0 overflow-hidden rounded-lg bg-placeholder">
           {img && <Image src={img} alt={product.name} fill sizes="64px" className={`object-cover ${product.in_stock ? "" : "grayscale"}`} />}
         </Link>
         <div className="min-w-0 flex-1">
@@ -27,9 +27,9 @@ export function ProductRow({ product, from, sourceId, children }: {
         </div>
         <div className="flex shrink-0 flex-col items-end justify-center gap-1">
           {!product.in_stock ? (
-            <span className="rounded-full bg-sand px-3 py-1.5 text-xs text-muted">Satışta değil</span>
+            <span className="rounded-full border border-line px-3 py-1.5 text-xs text-muted">Satışta değil</span>
           ) : product.has_link ? (
-            <a href={storeHref(product.id, from, sourceId)} target="_blank" rel="noopener nofollow sponsored" className="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-cream">
+            <a href={storeHref(product.id, from, sourceId)} target="_blank" rel="noopener nofollow sponsored" className="rounded-full bg-royal px-3 py-1.5 text-xs font-semibold text-bg">
               Mağazada gör
             </a>
           ) : null}

@@ -5,11 +5,11 @@ export function BrandMark({ size }: { size: number }) {
       style={{
         width: size,
         height: size,
-        background: "#A8432C",
+        background: "#5B2A86",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        color: "#F5F0EA",
+        color: "#F9F4F2",
         fontSize: size * 0.62,
         fontStyle: "italic",
         fontFamily: "serif",

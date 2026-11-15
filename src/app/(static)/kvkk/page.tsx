@@ -5,7 +5,7 @@ export default function KvkkPage() {
   return (
     <>
       <h1>KVKK aydınlatma metni</h1>
-      <p className="rounded-xl bg-sand p-3 text-sm">Bu metin taslaktır ve yayına alınmadan önce hukuki olarak gözden geçirilecektir.</p>
+      <p className="rounded-xl bg-lilac p-3 text-sm text-royal-dark">Bu metin taslaktır ve yayına alınmadan önce hukuki olarak gözden geçirilecektir.</p>
       <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;) kapsamında, Moxie olarak kişisel verilerini nasıl işlediğimizi aşağıda açıklıyoruz.</p>
 
       <h2>Hangi verileri işliyoruz?</h2>
