@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { signOut } from "@/app/actions/account";
 import { BackButton } from "@/components/BackButton";
 import { getViewer } from "@/lib/viewer";
-import { ConsentToggle, DeleteAccount } from "./SettingsClient";
+import { ConsentToggle, DeleteAccount, NotifyToggle } from "./SettingsClient";
 
 export const metadata = { title: "Ayarlar" };
 
@@ -28,15 +28,18 @@ export default async function SettingsPage() {
       <Section title="Gizlilik">
         <Link href="/ayarlar/profil#gizlilik" className={row}>Ölçülerin kimlere nasıl görünsün <span className="text-muted">→</span></Link>
         <ConsentToggle initial={!!viewer.priv.measurement_consent_at} />
+        <Link href="/ayarlar/engellenenler" className={row}>Engellenen hesaplar <span className="text-muted">→</span></Link>
       </Section>
 
       <Section title="Bildirimler">
-        <p className="px-4 py-3.5 text-sm text-muted">Şimdilik sadece hesabınla ilgili e-postalar (şifre sıfırlama gibi) gönderiyoruz.</p>
+        <NotifyToggle userId={viewer.id} initial={viewer.priv.notify_new_looks} />
+        <p className="px-4 py-3.5 text-xs text-muted">Takip, deneme, beğeni ve onay bildirimleri uygulama içinde gelir. E-posta sadece hesabın ve moderasyonla ilgili önemli durumlarda gönderilir.</p>
       </Section>
 
       <Section title="Moxie">
         <Link href="/kurallar" className={row}>Topluluk kuralları <span className="text-muted">→</span></Link>
         <Link href="/kvkk" className={row}>KVKK aydınlatma metni <span className="text-muted">→</span></Link>
+        <Link href="/sozlesme" className={row}>Kullanıcı sözleşmesi <span className="text-muted">→</span></Link>
         {viewer.isAdmin && <Link href="/admin" className={row}>Admin paneli <span className="text-muted">→</span></Link>}
       </Section>
 

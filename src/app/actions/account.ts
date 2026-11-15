@@ -12,7 +12,7 @@ export async function deleteMyAccount(reason: "user" | "underage" = "user") {
   if (!user) redirect("/giris");
 
   const admin = createAdminClient();
-  for (const bucket of ["post-photos", "avatars"]) {
+  for (const bucket of ["look-photos", "tryon-photos", "avatars"]) {
     // Her kullanıcının dosyaları "<id>/" klasöründe
     for (;;) {
       const { data: files, error } = await admin.storage.from(bucket).list(user.id, { limit: 1000 });

@@ -10,7 +10,7 @@ export default async function WelcomePage(props: PageProps<"/hosgeldin">) {
   if (!viewer) redirect("/giris?mod=kayit");
   const measurements = await getMyMeasurements();
 
-  let start = Number(adim) || (viewer.priv.onboarding_done ? 9 : viewer.priv.onboarding_step);
+  let start = Number(adim) || (viewer.priv.onboarding_done ? 10 : viewer.priv.onboarding_step);
   // Zorunlu adımlar bitmeden ileri atlanamaz
   if (!viewer.priv.kvkk_accepted_at || !viewer.priv.birth_year) start = 1;
   else if (start < 2) start = 2;
@@ -20,7 +20,7 @@ export default async function WelcomePage(props: PageProps<"/hosgeldin">) {
   return (
     <Onboarding
       userId={viewer.id}
-      startStep={Math.min(Math.max(start, 1), 9)}
+      startStep={Math.min(Math.max(start, 1), 10)}
       profile={viewer.profile}
       priv={viewer.priv}
       measurements={measurements}

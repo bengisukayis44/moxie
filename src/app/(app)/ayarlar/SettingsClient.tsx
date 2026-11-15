@@ -88,3 +88,35 @@ export function DeleteAccount() {
     </div>
   );
 }
+
+export function NotifyToggle({ userId, initial }: { userId: string; initial: boolean }) {
+  const [on, setOn] = useState(initial);
+  async function toggle() {
+    const next = !on;
+    setOn(next);
+    const { error } = await createClient().from("profile_private").update({ notify_new_looks: next }).eq("user_id", userId);
+    if (error) setOn(!next);
+  }
+  return (
+    <div className="flex items-start justify-between gap-4 px-4 py-3.5">
+      <div>
+        <p>Takip ettiklerimin yeni kombinleri</p>
+        <p className="mt-0.5 text-xs text-muted">Takip ettiğin biri yeni kombin paylaşınca bildirim al.</p>
+      </div>
+      <button type="button" role="switch" aria-checked={on} onClick={toggle}
+        className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${on ? "bg-terracotta" : "bg-placeholder"}`}>
+        <span className={`absolute top-0.5 h-6 w-6 rounded-full bg-card shadow transition-all ${on ? "left-[22px]" : "left-0.5"}`} />
+      </button>
+    </div>
+  );
+}
+
+export function Unblock({ blockerId, blockedId }: { blockerId: string; blockedId: string }) {
+  const router = useRouter();
+  return (
+    <button type="button" onClick={async () => {
+      await createClient().from("blocks").delete().eq("blocker_id", blockerId).eq("blocked_id", blockedId);
+      router.refresh();
+    }} className="shrink-0 rounded-full border border-line px-3 py-1 text-xs">Engeli kaldır</button>
+  );
+}

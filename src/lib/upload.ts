@@ -1,10 +1,11 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Bucket } from "./domain/looks";
 import { extFor, prepareImage } from "./image";
 
 // Dosyayı küçültüp EXIF'ten arındırır, "<userId>/..." yoluna yükler ve yolu döndürür.
 export async function uploadImage(
   supabase: SupabaseClient,
-  bucket: "post-photos" | "avatars",
+  bucket: Bucket,
   userId: string,
   file: File,
   opts: { maxSide?: number; prefix?: string } = {},

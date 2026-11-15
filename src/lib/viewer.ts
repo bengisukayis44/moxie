@@ -8,6 +8,7 @@ export type Viewer = {
   profile: Profile;
   priv: ProfilePrivate;
   isAdmin: boolean;
+  canCreateLooks: boolean;
 };
 
 // Oturumdaki kullanıcı. JWT yerelde doğrulanır (Supabase'e ağ isteği yok). İstek başına bir kez çalışır.
@@ -22,13 +23,14 @@ const getAuth = cache(async () => {
 export const getViewer = cache(async (): Promise<Viewer | null> => {
   const { supabase, userId, email } = await getAuth();
   if (!userId) return null;
-  const [{ data: profile }, { data: priv }, { data: isAdmin }] = await Promise.all([
-    supabase.from("profiles").select("id, username, display_name, avatar_url, bio").eq("id", userId).single(),
+  const [{ data: profile }, { data: priv }] = await Promise.all([
+    supabase.from("profiles").select("id, username, display_name, avatar_url, bio, role, is_trusted, is_suspended, style_tags").eq("id", userId).single(),
     supabase.from("profile_private").select("*").eq("user_id", userId).single(),
-    supabase.rpc("is_admin"),
   ]);
   if (!profile || !priv) return null;
-  return { id: userId, email, profile, priv, isAdmin: !!isAdmin };
+  const isAdmin = profile.role === "admin";
+  const canCreateLooks = (profile.role === "creator" || isAdmin) && !profile.is_suspended;
+  return { id: userId, email, profile, priv, isAdmin, canCreateLooks };
 });
 
 export const getMyMeasurements = cache(async (): Promise<BodyMeasurements | null> => {

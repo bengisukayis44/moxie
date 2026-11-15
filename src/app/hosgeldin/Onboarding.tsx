@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { deleteMyAccount } from "@/app/actions/account";
+import { FollowButton } from "@/components/Actions";
 import { Avatar } from "@/components/Avatar";
 import { BodyDiagram, ChipSelect, NumberField, VisibilitySelect } from "@/components/forms";
 import { BackIcon } from "@/components/Icons";
@@ -14,11 +15,11 @@ import {
   TOP_SIZES,
   VISIBILITY_LABELS,
 } from "@/lib/domain/measurements";
-import type { BodyMeasurements, MeasurementKey, Profile, ProfilePrivate, Visibility } from "@/lib/domain/types";
+import type { BodyMeasurements, FollowUser, MeasurementKey, Profile, ProfilePrivate, StyleTag, Visibility } from "@/lib/domain/types";
 import { createClient } from "@/lib/supabase/client";
 import { uploadImage } from "@/lib/upload";
 
-const TOTAL = 9;
+const TOTAL = 10;
 const MIN_AGE = 18;
 const VIS_KEYS: MeasurementKey[] = ["height_cm", "weight_kg", "bust_cm", "waist_cm", "hip_cm", "inseam_cm", "shoe_size"];
 
@@ -144,7 +145,8 @@ export function Onboarding({
             <label className="mt-8 flex items-start gap-3 text-sm leading-relaxed">
               <input type="checkbox" checked={kvkk} onChange={(e) => setKvkk(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#A8432C]" />
               <span>
-                <Link href="/kvkk" target="_blank" className="underline">KVKK Aydınlatma Metni</Link>&apos;ni ve{" "}
+                <Link href="/kvkk" target="_blank" className="underline">KVKK Aydınlatma Metni</Link>&apos;ni,{" "}
+                <Link href="/sozlesme" target="_blank" className="underline">Kullanıcı Sözleşmesi</Link>&apos;ni ve{" "}
                 <Link href="/kurallar" target="_blank" className="underline">Topluluk Kuralları</Link>&apos;nı okudum.
               </span>
             </label>
@@ -328,7 +330,21 @@ export function Onboarding({
           />
         )}
 
-        {step === 9 && <Done onMount={() => supabase.from("profile_private").update({ onboarding_done: true, onboarding_step: 9 }).eq("user_id", userId)} returnTo={returnTo} onGo={(href) => { router.replace(href); router.refresh(); }} />}
+        {step === 9 && (
+          <InterestsStep
+            initial={profile.style_tags ?? []}
+            busy={busy}
+            onSaveTags={async (tags) => {
+              const { error } = await supabase.from("profiles").update({ style_tags: tags }).eq("id", userId);
+              if (error) throw new Error("Kaydedilemedi.");
+              await saveStep(9);
+            }}
+            onDone={() => run(async () => 10)}
+            skip={skipBtn(10)}
+          />
+        )}
+
+        {step === 10 && <Done onMount={() => supabase.from("profile_private").update({ onboarding_done: true, onboarding_step: 10 }).eq("user_id", userId)} returnTo={returnTo} onGo={(href) => { router.replace(href); router.refresh(); }} />}
 
         {error && <p className="mt-4 rounded-lg bg-terracotta/10 px-3 py-2 text-sm text-terracotta">{error}</p>}
       </div>
@@ -492,6 +508,79 @@ function PrivacyStep({
   );
 }
 
+// 9. adım: 3–5 tarz seç, sonra önerilen hesapları takip et (akış ilk günden dolu olsun)
+function InterestsStep({ initial, busy, onSaveTags, onDone, skip }: {
+  initial: string[]; busy: boolean; onSaveTags: (tags: string[]) => Promise<void>; onDone: () => void; skip: React.ReactNode;
+}) {
+  const [tags, setTags] = useState<string[]>(initial);
+  const [all, setAll] = useState<StyleTag[]>([]);
+  const [phase, setPhase] = useState<"tags" | "follow">("tags");
+  const [suggested, setSuggested] = useState<FollowUser[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    createClient().from("style_tags").select("*").order("position").then(({ data }) => setAll((data ?? []) as StyleTag[]));
+  }, []);
+
+  async function next() {
+    try {
+      await onSaveTags(tags);
+      const { data } = await createClient().rpc("suggested_accounts", { p_limit: 5 });
+      const list = (data ?? []) as FollowUser[];
+      if (!list.length) return onDone();
+      setSuggested(list);
+      setPhase("follow");
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  }
+
+  if (phase === "follow" && suggested) {
+    return (
+      <Step eyebrow="İlgi alanları" title="Bu hesaplarla başla" why="Takip ettiklerinin yeni kombinleri ve denemeleri akışında görünür.">
+        <ul className="divide-y divide-line rounded-[var(--radius-card)] border border-line bg-card">
+          {suggested.map((u) => (
+            <li key={u.username} className="flex items-center gap-3 px-3 py-3">
+              <Avatar path={u.avatar_url} name={u.display_name ?? u.username} size={40} />
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-semibold">{u.display_name ?? u.username}</span>
+                <span className="block text-xs text-muted">@{u.username}</span>
+              </span>
+              <FollowButton userId={u.id} following={u.is_following} small />
+            </li>
+          ))}
+        </ul>
+        <Footer>
+          <Primary busy={busy} onClick={onDone}>Devam</Primary>
+        </Footer>
+      </Step>
+    );
+  }
+
+  return (
+    <Step eyebrow="İlgi alanları" title="Hangi tarzlar sana göre?" why="3–5 tane seç; akışını buna göre dolduralım.">
+      <div className="flex flex-wrap gap-2">
+        {all.map((t) => {
+          const on = tags.includes(t.slug);
+          return (
+            <button key={t.slug} type="button"
+              onClick={() => setTags((l) => (on ? l.filter((x) => x !== t.slug) : l.length >= 5 ? l : [...l, t.slug]))}
+              className={`rounded-full border px-4 py-2.5 text-[15px] ${on ? "border-terracotta bg-terracotta text-cream" : "border-line bg-card"}`}>
+              {t.label}
+            </button>
+          );
+        })}
+      </div>
+      <p className="mt-3 text-xs text-muted">{tags.length}/5 seçildi</p>
+      {error && <p className="mt-2 text-sm text-terracotta">{error}</p>}
+      <Footer>
+        <Primary busy={busy} disabled={tags.length < 1} onClick={next}>Devam</Primary>
+        {skip}
+      </Footer>
+    </Step>
+  );
+}
+
 function Done({ onMount, returnTo, onGo }: { onMount: () => unknown; returnTo: string | null; onGo: (href: string) => void }) {
   useEffect(() => {
     onMount();
@@ -503,10 +592,7 @@ function Done({ onMount, returnTo, onGo }: { onMount: () => unknown; returnTo: s
       <h1 className="mt-6 font-serif text-4xl">Hazırsın!</h1>
       <p className="mt-3 max-w-xs text-muted">Profilin oluştu. Eksik kalan ne varsa istediğin zaman profilinden tamamlayabilirsin.</p>
       <div className="mt-auto w-full space-y-2 pt-10">
-        <button type="button" onClick={() => onGo("/yeni")} className="w-full rounded-full bg-terracotta py-4 font-semibold text-cream">
-          İlk kombinini paylaş
-        </button>
-        <button type="button" onClick={() => onGo(returnTo ?? "/")} className="w-full rounded-full border border-ink py-4 font-semibold">
+        <button type="button" onClick={() => onGo(returnTo ?? "/")} className="w-full rounded-full bg-terracotta py-4 font-semibold text-cream">
           Keşfetmeye başla
         </button>
       </div>

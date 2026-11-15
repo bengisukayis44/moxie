@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { photoUrl } from "@/lib/domain/posts";
+import { photoUrl } from "@/lib/domain/looks";
 
 export function Avatar({ path, name, size = 36 }: { path: string | null | undefined; name: string; size?: number }) {
   const url = path?.startsWith("http") ? path : photoUrl(path, "avatars");

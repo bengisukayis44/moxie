@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { attributesFor } from "@/lib/domain/posts";
+import { attributesFor } from "@/lib/domain/looks";
 import type { AttributeDef, ItemAttributes } from "@/lib/domain/types";
 
 // Ürün formundaki katlanır "Gelişmiş detaylar" bölümü. Kategoriye göre ilgili özellikler gösterilir.

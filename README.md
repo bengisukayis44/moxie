@@ -2,7 +2,9 @@
 
 Kombini gör. Bedenini bil. Tek tıkla al.
 
-Kullanıcıların kendi aldıkları kıyafetleri üzerlerinde, aldıkları beden ve vücut ölçüleriyle paylaştığı platform. Proje rehberi: [CLAUDE.md](CLAUDE.md).
+Türkiye'de satılan ürünlerden kurulmuş linkli kombinler ve altında onları gerçekten giymiş, farklı vücutlardaki insanların denemeleri (boy, ölçü, aldığı beden). Canlı: [www.moxie.com.tr](https://www.moxie.com.tr). Proje rehberi: [CLAUDE.md](CLAUDE.md).
+
+Temel kavramlar: **ürün** (`product`) · **kombin** (`look`) · **deneme** (`tryon`).
 
 ## Yığın
 
@@ -26,8 +28,12 @@ npm run dev
 supabase db push
 ```
 
-Gizlilik testi (gizli ölçülerin hiçbir API yanıtında ham değer olarak dönmediğini doğrular):
+Veritabanı kuralları testi (gizlilik, onay kuyruğu, engelleme, takip, bildirim, otomatik gizleme, link takibi, arama, roller, hesap silme). Gerçek projeye karşı geçici kullanıcılarla çalışır ve kendini temizler:
 
 ```bash
-npm run test:privacy
+npm test
 ```
+
+## Roller
+
+Kombin oluşturma `creator` ve `admin` rollerine açıktır. Rol, admin panelinden (`/admin?sekme=kullanicilar`) verilir; kod değişikliği gerekmez.

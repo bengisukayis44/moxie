@@ -12,8 +12,8 @@ export default function KvkkPage() {
       <ul>
         <li><b>Hesap bilgileri:</b> e-posta adresi, kullanıcı adı, görünen ad, doğum yılı, profil fotoğrafı.</li>
         <li><b>Vücut ölçüleri (açık rızaya bağlı):</b> boy, kilo, göğüs, bel, kalça, bacak iç boyu, ayakkabı numarası, genelde giydiğin bedenler, vücut tipi.</li>
-        <li><b>Paylaşımlar:</b> yüklediğin fotoğraflar, ürün, beden ve fit bilgileri, açıklamalar.</li>
-        <li><b>Kullanım verileri:</b> beğeni, kaydetme ve şikayet kayıtları.</li>
+        <li><b>Denemeler ve kombinler:</b> yüklediğin fotoğraflar, aldığın bedenler, fit ve kumaş notları, açıklamalar; deneme anındaki ölçülerinin bir kopyası.</li>
+        <li><b>Kullanım verileri:</b> takip, engelleme, beğeni, kaydetme, bildirim ve şikayet kayıtları; &quot;Mağazada gör&quot; tıklamaları.</li>
       </ul>
 
       <h2>Hangi amaçla?</h2>
@@ -27,7 +27,7 @@ export default function KvkkPage() {
       <p>Hesap ve paylaşım verilerini, sözleşmenin kurulması ve ifası (KVKK m.5/2-c) kapsamında işliyoruz. Vücut ölçüleri ve vücut fotoğrafları özel nitelikli kişisel veri sayılabileceğinden, bu veriler yalnızca <b id="acik-riza">açık rızana</b> dayanarak (KVKK m.6) işlenir.</p>
 
       <h2>Açık rıza metni</h2>
-      <p>&quot;Vücut ölçülerimin, bana benzeyen kullanıcıları eşleştirmek amacıyla işlenmesine açık rıza veriyorum.&quot; Bu rızayı vermek zorunda değilsin; vermezsen Moxie&apos;yi ölçüsüz kullanmaya devam edebilirsin. Rızanı istediğin zaman Ayarlar → Gizlilik bölümünden geri çekebilirsin; bu durumda kayıtlı ölçülerin ve paylaşımlarındaki ölçü bilgileri silinir.</p>
+      <p>&quot;Vücut ölçülerimin, bana benzeyen kullanıcıları eşleştirmek amacıyla işlenmesine açık rıza veriyorum.&quot; Bu rızayı vermek zorunda değilsin; vermezsen Moxie&apos;yi ölçüsüz kullanmaya devam edebilirsin. Rızanı istediğin zaman Ayarlar → Gizlilik bölümünden geri çekebilirsin; bu durumda kayıtlı ölçülerin ve denemelerindeki ölçü bilgileri silinir.</p>
 
       <h2>Görünürlük</h2>
       <p>Her ölçünün başkalarına nasıl görüneceğini sen seçersin: herkese açık, aralık olarak (ör. 60–65 kg) ya da gizli. Gizli ölçüler yalnızca eşleştirmede kullanılır, hiçbir yerde ham değer olarak gösterilmez. Ölçü değerlerine göre kullanıcı listelenemez.</p>
@@ -36,7 +36,7 @@ export default function KvkkPage() {
       <p>Fotoğrafların yüklenmeden önce cihazında küçültülür ve konum dahil gizli bilgileri (EXIF) silinir.</p>
 
       <h2>Aktarım ve saklama</h2>
-      <p>Veriler, hizmet sağlayıcılarımız Supabase (veritabanı ve dosya depolama, AB/Frankfurt) ve Vercel (barındırma) altyapısında saklanır. Verilerin, hesabın açık olduğu sürece saklanır; hesabını sildiğinde profilin, ölçülerin, paylaşımların ve fotoğrafların kalıcı olarak silinir.</p>
+      <p>Veriler, hizmet sağlayıcılarımız Supabase (veritabanı ve dosya depolama, AB/Frankfurt) ve Vercel (barındırma) altyapısında saklanır. Verilerin, hesabın açık olduğu sürece saklanır; hesabını sildiğinde profilin, ölçülerin, kombinlerin, denemelerin, takiplerin, bildirimlerin ve fotoğrafların kalıcı olarak silinir.</p>
 
       <h2>Hakların</h2>
       <p>KVKK m.11 kapsamında verilerine erişme, düzeltme, silme ve işlemeye itiraz etme hakların vardır. Hesabını ve tüm verilerini Ayarlar → &quot;Hesabımı ve tüm verilerimi sil&quot; ile kendin silebilirsin. Diğer talepler için bize ulaşabilirsin.</p>

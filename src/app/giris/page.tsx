@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { photoUrl } from "@/lib/domain/posts";
+import { photoUrl } from "@/lib/domain/looks";
 import { getViewer } from "@/lib/viewer";
 import { AuthForm } from "./AuthForm";
 
@@ -15,8 +15,8 @@ export default async function LoginPage(props: PageProps<"/giris">) {
   if (await getViewer()) redirect(next);
 
   const supabase = await createClient();
-  const { data } = await supabase.rpc("search_posts", { p_limit: 12 });
-  const covers = ((data ?? []) as { cover_path: string | null }[]).map((p) => photoUrl(p.cover_path)).filter(Boolean) as string[];
+  const { data } = await supabase.rpc("feed_explore", { p_limit: 12 });
+  const covers = ((data ?? []) as { cover_path: string | null }[]).map((p) => photoUrl(p.cover_path, "look-photos")).filter(Boolean) as string[];
 
   return (
     <main className="relative mx-auto flex min-h-dvh max-w-md flex-col overflow-hidden bg-ink text-cream">
@@ -27,7 +27,7 @@ export default async function LoginPage(props: PageProps<"/giris">) {
           Kombini gör. <em className="text-peach">Bedenini bil.</em> Tek tıkla al.
         </h1>
         <p className="mt-2 text-sm text-cream/70">
-          Gerçek insanların üzerinde, aldıkları bedenle. Sana benzeyen vücutlarda nasıl durduğunu gör.
+          Türkiye&apos;de satılan ürünlerle kurulmuş kombinler ve onları gerçekten giymiş, sana benzeyen insanlar: boyları, ölçüleri ve aldıkları beden.
         </p>
         <AuthForm initialMode={mode} next={next} />
         <Link href="/" className="mt-5 block text-center text-sm text-cream/60 underline underline-offset-4">

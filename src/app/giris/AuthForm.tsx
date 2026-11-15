@@ -139,7 +139,8 @@ export function AuthForm({ initialMode, next }: { initialMode: Mode; next: strin
             <label className="flex items-start gap-3 text-xs leading-relaxed text-cream/80">
               <input type="checkbox" checked={kvkk} onChange={(e) => setKvkk(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-[#E8A48A]" />
               <span>
-                <Link href="/kvkk" target="_blank" className="underline">KVKK Aydınlatma Metni</Link>&apos;ni ve{" "}
+                <Link href="/kvkk" target="_blank" className="underline">KVKK Aydınlatma Metni</Link>&apos;ni,{" "}
+                <Link href="/sozlesme" target="_blank" className="underline">Kullanıcı Sözleşmesi</Link>&apos;ni ve{" "}
                 <Link href="/kurallar" target="_blank" className="underline">Topluluk Kuralları</Link>&apos;nı okudum, {MIN_AGE} yaşından büyüğüm.
               </span>
             </label>

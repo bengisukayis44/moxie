@@ -36,3 +36,12 @@ export const ArrowLeftIcon = BackIcon;
 export const ArrowRightIcon = ({ className }: P) => (
   <svg viewBox="0 0 24 24" className={`${base} ${className}`} strokeWidth={1.8}><path d="M9 5l7 7-7 7" /></svg>
 );
+export const ShareIcon = ({ className }: P) => (
+  <svg viewBox="0 0 24 24" className={`${base} ${className}`} strokeWidth={1.7}><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" /></svg>
+);
+export const BellIcon = ({ className }: P) => (
+  <svg viewBox="0 0 24 24" className={`${base} ${className}`} strokeWidth={1.7}><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0" /></svg>
+);
+export const DotsIcon = ({ className }: P) => (
+  <svg viewBox="0 0 24 24" className={`fill-current ${className}`}><circle cx="5" cy="12" r="1.8" /><circle cx="12" cy="12" r="1.8" /><circle cx="19" cy="12" r="1.8" /></svg>
+);

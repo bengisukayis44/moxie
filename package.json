@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:privacy": "node --env-file=.env.local --test tests/privacy.test.mjs"
+    "test": "node --env-file=.env.local --test tests/moxie.test.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
