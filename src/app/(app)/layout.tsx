@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { BottomNav } from "@/components/BottomNav";
+import { Intro } from "@/components/Intro";
 import { createClient } from "@/lib/supabase/server";
 import { getViewer, mandatoryStepsDone } from "@/lib/viewer";
 
@@ -14,6 +15,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   }
   return (
     <div className="mx-auto min-h-dvh max-w-md bg-bg pb-24">
+      <Intro loggedIn={!!viewer} />
       {children}
       <BottomNav username={viewer?.profile.username ?? null} unread={unread} />
     </div>

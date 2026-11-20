@@ -3,9 +3,10 @@ import { FollowButton } from "@/components/Actions";
 import { Avatar } from "@/components/Avatar";
 import { Callout } from "@/components/Callout";
 import { InfiniteGrid } from "@/components/InfiniteGrid";
+import { SwipeFeed } from "@/components/SwipeFeed";
 import { Logo } from "@/components/Logo";
-import { Disclosure } from "@/components/ProductRow";
 import { PAGE_SIZE } from "@/lib/domain/looks";
+import { loadSwipeLooks } from "@/lib/domain/swipe";
 import type { FeedItem, FollowUser } from "@/lib/domain/types";
 import { createClient } from "@/lib/supabase/server";
 import { getMyMeasurements, getViewer } from "@/lib/viewer";
@@ -24,15 +25,23 @@ export default async function FeedPage(props: PageProps<"/">) {
 
   // Birbirini beklemeden paralel çek
   const supabase = await createClient();
-  const [viewer, measurements, { data }] = await Promise.all([
+  const [viewer, measurements, { data }, swipe] = await Promise.all([
     getViewer(),
     tab === "yakin" ? getMyMeasurements() : null,
-    supabase.rpc(rpc, { p_limit: PAGE_SIZE }),
+    tab === "kesfet" ? { data: null } : supabase.rpc(rpc, { p_limit: PAGE_SIZE }),
+    tab === "kesfet" ? loadSwipeLooks(supabase, 0) : null,
   ]);
   const items = (data ?? []) as FeedItem[];
 
   let content: React.ReactNode;
-  if (needsLogin && !viewer) {
+  if (swipe) {
+    content = (
+      <SwipeFeed
+        initial={swipe}
+        empty={<Callout title="Henüz kombin yok" text="Yakında burada ekibin hazırladığı kombinler olacak." href="/ara" cta="Ara" />}
+      />
+    );
+  } else if (needsLogin && !viewer) {
     content = (
       <Callout
         title={tab === "yakin" ? "Sana benzeyen vücutları gör" : "Sevdiğin hesapları takip et"}
@@ -81,8 +90,7 @@ export default async function FeedPage(props: PageProps<"/">) {
           ))}
         </nav>
       </header>
-      <div className="px-4 pt-4">{content}</div>
-      {tab === "kesfet" && <Disclosure />}
+      {swipe ? content : <div className="px-4 pt-4">{content}</div>}
     </main>
   );
 }

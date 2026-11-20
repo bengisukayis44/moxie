@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* "Kraliyet moru" paleti. Koyu mod v1'de yok; token'lar CSS değişkeni olduğu için ileride eklenebilir. */
-  --color-bg: #f9f4f2;          /* sayfa arka planı */
-  --color-card: #fffcfb;        /* kart arka planı */
-  --color-blush: #f4d4dc;       /* yumuşak vurgu zemini, "İlk deneyen", seçili durumlar */
-  --color-lilac: #e4d8f2;       /* "Sana en yakın", bilgi zeminleri */
+  /* "Bordo" paleti (eski adıyla token isimleri korunuyor: royal = ana marka rengi).
+     Koyu mod v1'de yok; token'lar CSS değişkeni olduğu için ileride eklenebilir. */
+  --color-bg: #f7f2eb;          /* sayfa arka planı: krem */
+  --color-card: #fffcf8;        /* kart arka planı */
+  --color-blush: #f3dcd8;       /* yumuşak vurgu zemini, "İlk deneyen", seçili durumlar */
+  --color-lilac: #efdfe0;       /* "Sana en yakın", bilgi zeminleri: açık gül */
   --color-mocha: #a47864;       /* ikincil vurgu: ikon, ayırıcı detay, kategori etiketi */
   --color-mocha-text: #7a5a4c;  /* fit/kumaş notları gibi sıcak ikincil metin */
-  --color-royal: #5b2a86;       /* ana marka rengi: birincil butonlar, aktif sekme, logo */
-  --color-royal-dark: #3e1d5e;  /* lilac/blush üzerindeki metin, basılı buton */
-  --color-ink: #221a2b;         /* ana metin */
-  --color-muted: #75697a;       /* ikincil metin, tarih, sayaç */
-  --color-line: #eadfe3;        /* ince kenarlık, ayırıcı */
-  --color-placeholder: #eadfda; /* görsel yüklenirken */
+  --color-royal: #4a1622;       /* ana marka rengi (bordo): birincil butonlar, aktif sekme, logo */
+  --color-royal-dark: #33101a;  /* lilac/blush üzerindeki metin, basılı buton */
+  --color-ink: #24201c;         /* ana metin */
+  --color-muted: #6e655d;       /* ikincil metin, tarih, sayaç */
+  --color-line: #e6ddd6;        /* ince kenarlık, ayırıcı */
+  --color-placeholder: #ece4d9; /* görsel yüklenirken */
   --color-error: #b3261e;       /* sadece form hataları */
 
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-serif: var(--font-display), Didot, Georgia, serif;
+  --font-sans: var(--font-ui), system-ui, sans-serif;
 
   --radius-card: 14px;
 }
