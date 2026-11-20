@@ -11,7 +11,7 @@ Moxie, Türkiye'ye özel bir kombin platformu. İki şeyi tek yerde birleştirir
 
 Kullanıcı bir kombin beğendiğinde aynı ekranda şunları bulur: "Bu bende nasıl durur? Kaç beden almalıyım? Nereden alırım?"
 
-Slogan: **Kombini gör. Bedenini bil. Tek tıkla al.**
+Slogan: **Got your MOXIE?** — alt satır: *Real people. Real sizes. Real fits.* (Türkçe açıklama: Kombini gör. Bedenini bil. Tek tıkla al.)
 
 **Platform sırası:** Şimdi web (mobil öncelikli; TikTok/Instagram bio linkinden gelen kullanıcı telefondan açar). Sonra mobil uygulama (iOS + Android), aynı backend; iş mantığı web arayüzüne gömülmez (bkz. §6).
 
@@ -70,7 +70,9 @@ v1 kodu 1. aşamayı çalıştırır; 2. ve 3. aşama sadece yetki ayarıyla aç
 
 Sonrası: eksik ölçüde kapatılabilir "Profilin %X tamam" kartı; "Bana yakın" ölçü yoksa ölçü adımlarını açar.
 
-**Feed (`/`):** Keşfet (öne çıkanlar önce, sonra en yeni kombinler) · Takip (takip edilenlerin yeni kombin ve denemeleri; kimse yoksa önerilen hesaplar) · Bana yakın (ölçüleri en yakın kişilerin denemeleri). Kombin kartı: kapak, ad, "4 kişi denedi", "Sana yakın biri denedi". Deneme kartı: fotoğraf, "1.65 · jean 38", yakınlık rozeti. 2 sütun, ~3:4, sonsuz kaydırma.
+**Karşılama (her açılışta):** bordo zemin, topuklu M, üç kombin fotoğrafı yelpaze, "Got your MOXIE?", "Keşfetmeye başla" ve "Telefonuna uygulama olarak yükle" (nerede açıldığını algılayıp ana ekrana ekleme adımlarını gösterir). Sayfa içi geçişlerde tekrar çıkmaz.
+
+**Feed (`/`):** Keşfet: TikTok tarzı tam ekran dikey kaydırma; her kombin bir ekran (fotoğraf, oluşturan, "X kişi denedi", "Sana yakın biri denedi"), altında sağa kaydırılan ürün kartları (stok durumu, fiyat). Sıra: öne çıkanlar önce, sonra en yeni · Takip (takip edilenlerin yeni kombin ve denemeleri; kimse yoksa önerilen hesaplar) · Bana yakın (ölçüleri en yakın kişilerin denemeleri). Kombin kartı: kapak, ad, "4 kişi denedi", "Sana yakın biri denedi". Deneme kartı: fotoğraf, "1.65 · jean 38", yakınlık rozeti. 2 sütun, ~3:4, sonsuz kaydırma.
 
 **Kombin sayfası (`/k/[id]`) — en önemli ekran:** fotoğraflar, ad, oluşturan (takip et), açıklama, tarz etiketleri · ürünler (görsel, marka · ad, fiyat, "Mağazada gör"; satışta değilse gri) · "Bu kombini şunlar da denedi": yatay kartlar, en yakın vücut ilk sırada "Sana en yakın" etiketiyle, sonra yakınlık ve tarih; karta dokununca deneme detayı alttan açılır; sonda her zaman "+ Sen de dene"; hiç yoksa "İlk deneyen sen ol" · beğen, kaydet, paylaş (link kopyala), şikayet · benzer kombinler.
 
@@ -140,26 +142,26 @@ Fit notları düzenlenmez. Ton yargısız; "ideal kilo" yok. Affiliate linkli ü
 
 ## 12. Tasarım dili
 
-### Renkler — "Kraliyet moru" paleti
+### Renkler — "Bordo" paleti
 
-Fikir: blush kızsı ve güven veren taraf; mocha sıcaklık ve doğallık (ten tonlarına yakın, farklı tenleri fotoğrafta güzel gösterir); kraliyet moru güç, cesaret ve Gen Z enerjisi ("Moxie" = cesaret). Mor soğuk alttonlu; blush da buna uygun, hafif soğuk bir gül pembesi.
+Fikir: koyu bordo cesaret ve şıklık ("Moxie" = cesaret), krem zemin fotoğrafları öne çıkarır, mocha sıcaklık ve doğallık. Token adları eski paletten kaldı (`royal` = ana marka rengi, şimdi bordo); kod değişmeden sadece değerler güncellendi.
 
 Token'lar `src/app/globals.css` içinde CSS değişkeni olarak tanımlı (Tailwind sınıfı: `bg-royal`, `text-royal-dark` vb.).
 
 | Token | Hex | Kullanım |
 |---|---|---|
-| `bg` | `#F9F4F2` | Sayfa arka planı |
-| `card` | `#FFFCFB` | Kart arka planı |
-| `blush` | `#F4D4DC` | Yumuşak vurgu zeminleri, "İlk deneyen" rozeti, seçili durumlar |
-| `lilac` | `#E4D8F2` | "Sana en yakın" rozeti, bilgi zeminleri |
+| `bg` | `#F7F2EB` | Sayfa arka planı (krem) |
+| `card` | `#FFFCF8` | Kart arka planı |
+| `blush` | `#F3DCD8` | Yumuşak vurgu zeminleri, "İlk deneyen" rozeti, seçili durumlar |
+| `lilac` | `#EFDFE0` | "Sana en yakın" rozeti, bilgi zeminleri (açık gül) |
 | `mocha` | `#A47864` | İkincil vurgu: ikonlar, ayırıcı detaylar, kategori etiketleri |
 | `mocha-text` | `#7A5A4C` | Fit/kumaş notları gibi sıcak ikincil metin |
-| `royal` | `#5B2A86` | Ana marka rengi: birincil butonlar ("Sen de dene", "Mağazada gör"), aktif sekme, logo |
-| `royal-dark` | `#3E1D5E` | lilac ve blush üzerindeki metin, butonun basılı hali |
-| `ink` | `#221A2B` | Ana metin (saf siyah yerine morumsu koyu) |
-| `muted` | `#75697A` | İkincil metin, tarih, sayaçlar |
-| `line` | `#EADFE3` | İnce kenarlıklar, ayırıcılar |
-| `placeholder` | `#EADFDA` | Görsel yüklenirken |
+| `royal` | `#4A1622` | Ana marka rengi (bordo): birincil butonlar, aktif sekme, logo, karşılama ekranı |
+| `royal-dark` | `#33101A` | lilac ve blush üzerindeki metin, butonun basılı hali |
+| `ink` | `#24201C` | Ana metin |
+| `muted` | `#6E655D` | İkincil metin, tarih, sayaçlar |
+| `line` | `#E6DDD6` | İnce kenarlıklar, ayırıcılar |
+| `placeholder` | `#ECE4D9` | Görsel yüklenirken |
 | `error` | `#B3261E` | Sadece form hataları |
 
 Metin bg/card üzerinde ink veya muted; royal buton üzerinde bg rengi. lilac/blush zeminlerde metin her zaman royal-dark.
@@ -171,9 +173,13 @@ Metin bg/card üzerinde ink veya muted; royal buton üzerinde bg rengi. lilac/bl
 - Fotoğraflar ön planda: arka planlar açık ve sade kalsın ki kıyafet renkleri bozulmadan görünsün.
 - Koyu mod v1'de yok; token'lar ileride koyu mod eklenebilecek şekilde CSS değişkeni olarak tanımlı.
 
+### Logo
+
+Topuklu M: iki stiletto ayakkabı ortada çaprazlanıp M harfini oluşturur, topukları M'nin dış bacakları. Kelime logo: topuklu M + "OXIE" (Bodoni Moda). Çizim `src/components/Logo.tsx` (arayüz) ve `src/lib/brand-mark.tsx` (favicon/PWA ikonları, bordo zemin + krem M).
+
 ### Tipografi
 
-Başlıklar Playfair Display (vurgu için italik); gövde ve arayüz DM Sans; küçük etiketler DM Sans, büyük harf, geniş harf aralığı, royal.
+Başlıklar Bodoni Moda (vurgu için italik); gövde ve arayüz Outfit; küçük etiketler Outfit, büyük harf, geniş harf aralığı, royal.
 
 ### Genel
 

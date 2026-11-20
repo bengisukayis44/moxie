@@ -2,12 +2,12 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Moxie — Kombini gör. Bedenini bil.",
-    short_name: "Moxie",
-    description: "Gerçek insanlar, gerçek kıyafetler, aldıkları beden.",
+    name: "MOXIE",
+    short_name: "MOXIE",
+    description: "Got your MOXIE? Real people. Real sizes. Real fits.",
     start_url: "/",
     display: "standalone",
-    background_color: "#F9F4F2",
+    background_color: "#4A1622",
     theme_color: "#F9F4F2",
     lang: "tr",
     icons: [

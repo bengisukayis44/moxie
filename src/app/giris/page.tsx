@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { photoUrl } from "@/lib/domain/looks";
 import { getViewer } from "@/lib/viewer";
 import { AuthForm } from "./AuthForm";
+import { Wordmark } from "@/components/Logo";
 
 export const metadata = { title: "Giriş" };
 
@@ -19,12 +20,12 @@ export default async function LoginPage(props: PageProps<"/giris">) {
   const covers = ((data ?? []) as { cover_path: string | null }[]).map((p) => photoUrl(p.cover_path, "look-photos")).filter(Boolean) as string[];
 
   return (
-    <main className="relative mx-auto flex min-h-dvh max-w-md flex-col overflow-hidden bg-ink text-bg">
+    <main className="relative mx-auto flex min-h-dvh max-w-md flex-col overflow-hidden bg-royal text-bg">
       <Backdrop covers={covers} />
-      <div className="relative z-10 mt-auto bg-gradient-to-t from-ink via-ink/95 to-transparent px-6 pb-8 pt-24">
-        <p className="font-serif text-5xl italic">moxie<span className="text-blush">.</span></p>
+      <div className="relative z-10 mt-auto bg-gradient-to-t from-royal via-royal/95 to-transparent px-6 pb-8 pt-24">
+        <p className="text-5xl"><Wordmark /></p>
         <h1 className="mt-3 font-serif text-2xl leading-snug">
-          Kombini gör. <em className="text-blush">Bedenini bil.</em> Tek tıkla al.
+          <span lang="en">Got your <em className="text-blush">MOXIE?</em></span>
         </h1>
         <p className="mt-2 text-sm text-bg/70">
           Türkiye&apos;de satılan ürünlerle kurulmuş kombinler ve onları gerçekten giymiş, sana benzeyen insanlar: boyları, ölçüleri ve aldıkları beden.
@@ -47,7 +48,7 @@ function Backdrop({ covers }: { covers: string[] }) {
       {[0, 2, 4].map((o, ci) => (
         <div key={o} className={`flex flex-col gap-2 ${ci === 1 ? "animate-drift-slow" : "animate-drift"}`} style={{ marginTop: ci === 1 ? -80 : 0 }}>
           {[...col(o), ...col(o)].map((src, i) => (
-            <div key={i} className="relative aspect-[3/4] shrink-0 overflow-hidden rounded-xl" style={{ background: ["#5B2A86", "#F4D4DC", "#EADFDA", "#A47864"][(i + ci) % 4] }}>
+            <div key={i} className="relative aspect-[3/4] shrink-0 overflow-hidden rounded-xl" style={{ background: ["#4A1622", "#F3DCD8", "#ECE4D9", "#A47864"][(i + ci) % 4] }}>
               {src && <Image src={src} alt="" fill sizes="33vw" className="object-cover" />}
             </div>
           ))}
